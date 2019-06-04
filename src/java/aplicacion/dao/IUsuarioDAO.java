@@ -5,10 +5,15 @@
  */
 package aplicacion.dao;
 
+import aplicacion.modelo.dominio.Usuario;
+
 /**
  *
  * @author jaimito
  */
-public class NewClass {
+public interface IUsuarioDAO {
+    public void crearUsuario(Usuario usuario);
+    public void eliminarUsuario(Usuario usuario);
+    public void modificarUsuario(Usuario usuario);
     
 }
