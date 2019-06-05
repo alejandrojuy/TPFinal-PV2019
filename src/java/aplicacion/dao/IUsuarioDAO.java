@@ -6,12 +6,15 @@
 package aplicacion.dao;
 
 import aplicacion.modelo.dominio.Usuario;
+import java.util.List;
 
 /**
  *
  * @author jaimito
  */
 public interface IUsuarioDAO {
+    public List<Usuario> obtenerUsuarios();
+    Usuario verificarCredenciales(Integer dni,String password);
     public void crearUsuario(Usuario usuario);
     public void eliminarUsuario(Usuario usuario);
     public void modificarUsuario(Usuario usuario);

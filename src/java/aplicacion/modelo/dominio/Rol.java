@@ -11,34 +11,59 @@ import java.io.Serializable;
  *
  * @author jaimito
  */
-public class Rol implements Serializable{
-    private String rol_tipo;
-    private String rol_detalle;
+public class Rol implements Serializable {
 
+    private int codigo;
+    private String nombre;
+    private String descripcion;
+    private String borrado;
+
+    //Constructores
     public Rol() {
     }
 
-    public Rol(String rol_tipo, String rol_detalle) {
-        this.rol_tipo = rol_tipo;
-        this.rol_detalle = rol_detalle;
+    public Rol(int codigo, String nombre, String descripcion, String borrado) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.borrado = borrado;
+    }
+    
+    //Getters & Setters
+
+    public int getCodigo() {
+        return codigo;
     }
 
-    public String getRol_tipo() {
-        return rol_tipo;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public void setRol_tipo(String rol_tipo) {
-        this.rol_tipo = rol_tipo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getRol_detalle() {
-        return rol_detalle;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setRol_detalle(String rol_detalle) {
-        this.rol_detalle = rol_detalle;
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(String borrado) {
+        this.borrado = borrado;
     }
     
     
     
+
 }
