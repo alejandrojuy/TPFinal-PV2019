@@ -23,10 +23,10 @@ public class ListaProductos implements Serializable{
     listaProductos.add(new Producto(001,20,"Tita"));
     
     }
-    public void crearProduc(Producto producto)
+    public void crearProducto(Producto producto)
     {  Producto prodAux = new Producto();
             prodAux.setCodigo(producto.getCodigo());
-            prodAux.setNombrePro(producto.getNombrePro());
+            prodAux.setNombre(producto.getNombre());
             prodAux.setPrecio(producto.getPrecio());
        
         listaProductos.add(prodAux);
@@ -43,8 +43,5 @@ public class ListaProductos implements Serializable{
         this.listaProductos = listaProductos;
     }
 
-    
-    
-    
-    
+ 
 }

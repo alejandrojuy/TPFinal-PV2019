@@ -6,24 +6,39 @@
 package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author jaimito
  */
 public class Producto implements Serializable{
-    private int codigo;
+    private int    codigo;
+    private String marca;
+    private String nombre;
     private double precio;
-    private String nombrePro;
-
+    private int    stock;
+    private String deposito;
+    private String estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
+    private Categoria categoria;
     public Producto() {
     }
 
-    
-    public Producto(int codigo, double precio, String nombrePro) {
+    public Producto(int codigo, String marca, String nombre, double precio, int stock, String deposito, String estado, Categoria categoria) {
+        this.codigo = codigo;
+        this.marca = marca;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.deposito = deposito;
+        this.estado = estado;
+        this.categoria = categoria;
+    }
+
+    public Producto(int codigo, double precio, String nombre) {
         this.codigo = codigo;
         this.precio = precio;
-        this.nombrePro = nombrePro;
+         this.nombre = nombre;
     }
 
     public int getCodigo() {
@@ -34,6 +49,22 @@ public class Producto implements Serializable{
         this.codigo = codigo;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -42,20 +73,43 @@ public class Producto implements Serializable{
         this.precio = precio;
     }
 
-
-    public String getNombrePro() {
-        return nombrePro;
+    public int getStock() {
+        return stock;
     }
 
-    public void setNombrePro(String nombrePro) {
-        this.nombrePro = nombrePro;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
-    @Override
+    public String getDeposito() {
+        return deposito;
+    }
+
+    public void setDeposito(String deposito) {
+        this.deposito = deposito;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+
+   @Override
     public String toString() {
-        return "codigo: "+this.codigo +" "+ "nombre del Producto: "+ this.getNombrePro()+" "+"Precio del Producto: "+" "+this.precio;   
-                }
+        return "Codigo: "+ this.codigo+" "+ "Nombre: "+this.nombre+" "+"Precio: "+" "+ this.precio;
+    }
     
-    
-    
+   
 }

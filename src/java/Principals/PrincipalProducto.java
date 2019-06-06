@@ -36,7 +36,7 @@ public class PrincipalProducto {
         producto.setPrecio(pre);
         System.out.println("ingresa nombre del producto");
         String nom= sc.next();
-        producto.setNombrePro(nom);
+        producto.setNombre(nom);
         IproductoDAO.crearProducto(producto);
         System.out.println("ingresa Codigo del producto");
          cod= sc.nextInt();
@@ -46,12 +46,15 @@ public class PrincipalProducto {
         producto.setPrecio(pre);
         System.out.println("ingresa nombre del producto");
          nom= sc.next();
-        producto.setNombrePro(nom);
+        producto.setNombre(nom);
         IproductoDAO.crearProducto(producto);
         
         for(Producto p: IproductoDAO.mostrarLista())
         {System.out.println(p);
         }
+        Producto otroProducto = new Producto(555, 504, "Roblen");
+        
+        IproductoDAO.crearProducto(otroProducto);
     }
     
 }

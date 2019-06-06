@@ -25,8 +25,9 @@ public class ProductoDAOImp implements Serializable, IProductoDAO{
         
     @Override
     public void crearProducto(Producto producto) {
+        System.out.println("creando ProducIMPL");
+        lista.crearProducto(producto);
         
-        lista.crearProduc(producto);
     }
 
     @Override
