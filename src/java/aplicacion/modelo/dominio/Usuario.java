@@ -6,6 +6,7 @@
 package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -18,10 +19,11 @@ public class Usuario implements Serializable{
     private String apellido;
     private String direccion;
     private String provincia;
-    private String codigoPostal;
-    private String fechaNacimiento;
+    private int codigoPostal;
+    private Date fechaNacimiento;
     private String telefono;
     private String email;
+    private String usuario;
     private String password;
     private String borrado;
     private Rol rol;
@@ -31,7 +33,7 @@ public class Usuario implements Serializable{
     public Usuario() {
     }
     
-    public Usuario(int dni, String nombre, String apellido, String direccion, String provincia, String codigoPostal, String fechaNacimiento, String telefono, String email, String password, String borrado, Rol rol) {
+    public Usuario(int dni, String nombre, String apellido, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, String telefono, String email, String usuario,String password,String borrado, Rol rol) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,6 +43,7 @@ public class Usuario implements Serializable{
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.email = email;
+        this.usuario = usuario;
         this.password = password;
         this.borrado = borrado;
         this.rol = rol;
@@ -88,19 +91,19 @@ public class Usuario implements Serializable{
         this.provincia = provincia;
     }
 
-    public String getCodigoPostal() {
+    public int getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
+    public void setCodigoPostal(int codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -143,6 +146,17 @@ public class Usuario implements Serializable{
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
+    
+    
     
     
     

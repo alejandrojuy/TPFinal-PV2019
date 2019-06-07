@@ -10,6 +10,7 @@ import aplicacion.modelo.dominio.Usuario;
 import aplicacion.modelo.utils.ListadoUsuarios;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -17,43 +18,48 @@ import java.util.List;
  */
 public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
 
-    private ListadoUsuarios listaUsuarios;
+    private List<Usuario> listaUsuarios;
+    private ListadoUsuarios listadoUsuarios;
 
     //Constructor
     public UsuarioDAOImp() {
-        listaUsuarios = new ListadoUsuarios();
+        listaUsuarios = new ListadoUsuarios().getListadoUsuarios();
+        listadoUsuarios = new ListadoUsuarios();
     }
 
     //Metodos
     @Override
     public List<Usuario> obtenerUsuarios() {
-        return listaUsuarios.getListadoUsuarios();
+        return listaUsuarios;
     }
 
     @Override
-    public Usuario verificarCredenciales(Integer dni, String password) {
-        Usuario us = null;
-        for (Usuario usuario : listaUsuarios.getListadoUsuarios()) {
-            if (usuario.getDni() == dni && usuario.getPassword().equals(password)) {
-                us = usuario;
+    public Usuario verificarCredenciales(String usuario, String password) {
+        Usuario usuarioEncontrado = null;
+        for (Usuario usu : listaUsuarios) {
+            if (usu.getUsuario().equals(usuario) && usu.getPassword().equals(password)) {
+                usuarioEncontrado = usu;
+                FacesContext.getCurrentInstance().getExternalContext()
+                        .getSessionMap().put("usuario", usuarioEncontrado);
             }
         }
-        return us;
+        return usuarioEncontrado;
     }
 
     @Override
     public void crearUsuario(Usuario usuario) {
-        listaUsuarios.agregar(usuario);
+        usuario.setBorrado("N");
+        listadoUsuarios.agregar(usuario);
     }
 
     @Override
     public void eliminarUsuario(Usuario usuario) {
-        listaUsuarios.eliminar(usuario);
+        listadoUsuarios.eliminar(usuario);
     }
 
     @Override
     public void modificarUsuario(Usuario usuario) {
-        listaUsuarios.modificar(usuario);
+        listadoUsuarios.modificar(usuario);
     }
 
 }

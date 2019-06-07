@@ -19,8 +19,7 @@ public class ListadoRoles {
     public ListadoRoles(){
         listaRoles = new ArrayList<>();
         listaRoles.add(new Rol(1,"Administrador","Usuario con todos los permisos","N"));
-        listaRoles.add(new Rol(2,"Usuario A","Usuario con algunos permisos","N"));
-        listaRoles.add(new Rol(3,"Usuario B","Usuario con pocos permisos","N"));
+        listaRoles.add(new Rol(2,"UsuarioComun","Usuario con algunos permisos","N"));
               
     }
 

@@ -20,20 +20,47 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class UsuarioBean implements Serializable{
     private IUsuarioDAO iUsuarioDAO;
+    private Usuario usuario;
+    
+    //Constructor
     public UsuarioBean() {
         iUsuarioDAO = new UsuarioDAOImp();
+        usuario = new Usuario();
     }
     
     //Metodos
     /**
-     * Retorna un objeto Usuario si coincide con el dni 
+     * Retorna un objeto Usuario si coincide con el usuario 
      * y el password ingresado
-     * @param dni
+     * @param usuario
      * @param password
      * @return 
      */
-    public Usuario verificarCredenciales(Integer dni,String password){
-        return iUsuarioDAO.verificarCredenciales(dni, password);
+    public Usuario verificarCredenciales(String usuario,String password){
+        return iUsuarioDAO.verificarCredenciales(usuario, password);
     }
+    
+    public void agregarUsuario(){
+        iUsuarioDAO.crearUsuario(usuario);
+    }
+    
+    //Getters & Setters
+
+    public IUsuarioDAO getiUsuarioDAO() {
+        return iUsuarioDAO;
+    }
+
+    public void setiUsuarioDAO(IUsuarioDAO iUsuarioDAO) {
+        this.iUsuarioDAO = iUsuarioDAO;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     
 }

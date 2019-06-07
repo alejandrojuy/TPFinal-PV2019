@@ -5,6 +5,7 @@
  */
 package aplicacion.modelo.utils;
 
+
 import aplicacion.modelo.dominio.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +29,21 @@ public class ListadoUsuarios {
         listadoUsuarios.add(usuario);
     }
 
-    public void eliminar(Usuario usuario) {
+    public void modificar(Usuario usuario) {
         for (int i = 0; i < listadoUsuarios.size(); i++) {
-            // if(listadoUsuarios.get(i).getDni().equals(usuario.getDni())){
-            //   listaUsuarios.set(i, usuario);
+            if (listadoUsuarios.get(i).getUsuario().equals(usuario.getUsuario())) {
+                listadoUsuarios.set(i, usuario);
+            }
         }
     }
 
-    public void modificar(Usuario usuario) {
+    public void eliminar(Usuario usuario) {
         for (int i = 0; i < listadoUsuarios.size(); i++) {
-            // if (listadoUsuarios.get(i).getDni().equals(editorial.getDni())) {
-            //   listadoUsuarios.remove(i);
-            //}
+            if (listadoUsuarios.get(i).getUsuario().equals(usuario.getUsuario())) {
+                listadoUsuarios.remove(i);
+            }
         }
+        
     }
     //Getters & Setters
 
@@ -51,5 +54,5 @@ public class ListadoUsuarios {
     public void setListadoUsuarios(List<Usuario> listadoUsuarios) {
         this.listadoUsuarios = listadoUsuarios;
     }
-
+    
 }

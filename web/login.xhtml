@@ -14,35 +14,31 @@
         </h:head>
 
         <h:body>
-
-            <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Resources">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-
-                        </p:submenu>
-
-                    </p:menu>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
-                </p:layoutUnit>
-
-            </p:layout>
+            <h:form id="frmLogin">
+                <div class="box-login">
+                    <p:growl id="mensajes" showDetail="true"/>
+                    <p:panel id="pnlPrincipal" header="Login de Usuario" >
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="txtUsuario" value="usuario"/>
+                            <p:inputText id="txtUsuario" placeholder="ingrese su Usuario"
+                                         required="true" requiredMessage="Debe ingresar su Usuario"
+                                         value="#{loginFormBean.usuario}"/>
+                            <p:outputLabel for="txtPassword" value="Password"/>
+                            <p:password id="txtPassword" placeholder="Ingrese su Password"
+                                        required="true" requiredMessage="Debe ingresar su Password"
+                                        value="#{loginFormBean.password}"/>
+                            <br></br>
+                            <p:commandButton id="btnLogin" value="Aceptar" update="mensajes" 
+                                             style="margin: 20px" action="#{loginFormBean.verificarCredenciales()}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel>
+                        <p:panelGrid>
+                            <p:outputLabel value="Eres nuevo?"/>
+                            <p:commandLink value="Nuevo Usuario"/>
+                        </p:panelGrid>
+                </div>
+            </h:form>
 
         </h:body>
 

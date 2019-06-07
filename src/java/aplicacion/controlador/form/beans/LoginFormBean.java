@@ -20,52 +20,58 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @ViewScoped
 public class LoginFormBean {
-    @ManagedProperty(value="#{usuarioBean}")
+
+    @ManagedProperty(value = "#{usuarioBean}")
     private UsuarioBean usuarioBean;
-    private Integer dni;
+    private String usuario;
     private String password;
-    
+
     // Constructor
     public LoginFormBean() {
     }
-    
+
     //Metodos
-    
     /**
-     * Verificar si el dni y el password ingresado
-     * corresponden a un usuario guardado en la lista de usuarios
-     * @return 
+     * Verificar si el usuario y el password ingresado corresponden a un usuario
+     * guardado en la lista de usuarios
+     *
+     * @return
      */
-    public String verificarCredenciales(){
+    public String verificarCredenciales() {
         String resultado = "";
-        Usuario usuario = usuarioBean.verificarCredenciales(dni, password);
+        Usuario usuario = usuarioBean.verificarCredenciales(this.usuario, this.password);
         if (usuario != null) {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario",usuario);
-            resultado = "menu?faces-redirect=true";
-        }else{
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
+                resultado = "home?faces-redirect=true";
+        } else {
             FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Acceso Denegado","Las credenciales son incorrectas"));
+            fc.addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso Denegado", "Las credenciales son incorrectas"));
         }
         return resultado;
     }
-    
+
+    public boolean verificarSesion() {
+        boolean estado;
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") == null) {
+            estado = false;
+        } else {
+            estado = true;
+        }
+        return estado;
+    }
+
+    public String cerrarSesion() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login";
+    }
+
     //Getters & Setters
-    
-    
-     public UsuarioBean getUsuarioBean() {
+    public UsuarioBean getUsuarioBean() {
         return usuarioBean;
     }
 
     public void setUsuarioBean(UsuarioBean usuarioBean) {
         this.usuarioBean = usuarioBean;
-    }
-
-    public Integer getDni() {
-        return dni;
-    }
-
-    public void setDni(Integer dni) {
-        this.dni = dni;
     }
 
     public String getPassword() {
@@ -75,5 +81,13 @@ public class LoginFormBean {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
 }

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IUsuarioDAO {
     public List<Usuario> obtenerUsuarios();
-    public Usuario verificarCredenciales(Integer dni,String password);
+    public Usuario verificarCredenciales(String usuario,String password);
     public void crearUsuario(Usuario usuario);
     public void eliminarUsuario(Usuario usuario);
     public void modificarUsuario(Usuario usuario);
