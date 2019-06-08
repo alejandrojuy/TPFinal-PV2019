@@ -13,18 +13,19 @@ import java.util.Date;
  * @author jaimito
  */
 public class Usuario implements Serializable{
-    
+
+    private String usuario;
+    private String password;
     private int dni;
     private String nombre;
     private String apellido;
+    private String sexo;
     private String direccion;
     private String provincia;
     private int codigoPostal;
     private Date fechaNacimiento;
-    private String telefono;
+    private int telefono;
     private String email;
-    private String usuario;
-    private String password;
     private String borrado;
     private Rol rol;
     
@@ -32,24 +33,42 @@ public class Usuario implements Serializable{
 
     public Usuario() {
     }
-    
-    public Usuario(int dni, String nombre, String apellido, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, String telefono, String email, String usuario,String password,String borrado, Rol rol) {
+
+    public Usuario(String usuario, String password, int dni, String nombre, String apellido, String sexo, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, int telefono, String email, String borrado, Rol rol) {
+        this.usuario = usuario;
+        this.password = password;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.sexo = sexo;
         this.direccion = direccion;
         this.provincia = provincia;
         this.codigoPostal = codigoPostal;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.email = email;
-        this.usuario = usuario;
-        this.password = password;
         this.borrado = borrado;
         this.rol = rol;
     }
     
+    
     //Getters & Setters
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getDni() {
         return dni;
@@ -73,6 +92,14 @@ public class Usuario implements Serializable{
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getDireccion() {
@@ -107,11 +134,11 @@ public class Usuario implements Serializable{
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
@@ -121,14 +148,6 @@ public class Usuario implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getBorrado() {
@@ -147,22 +166,6 @@ public class Usuario implements Serializable{
         this.rol = rol;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

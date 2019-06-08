@@ -12,35 +12,45 @@ import java.io.Serializable;
  * @author jaimito
  */
 public class Categoria  implements Serializable{
-    private int codigoCate;
-    private String tipoCate;
+   private int codigoCategoria; 
+   private  String descripcion;
+   private  String nombreCate;
 
     public Categoria() {
     }
+//constructor
+    public Categoria(int codigoCategoria, String descripcion, String nombreCate) {
+        this.codigoCategoria = codigoCategoria;
+        this.descripcion = descripcion;
+        this.nombreCate = nombreCate;
+    }
+   
+    //gets y sets 
 
-    
-    public Categoria(int codigoCate, String tipoCate) {
-        this.codigoCate = codigoCate;
-        this.tipoCate = tipoCate;
+    public int getCodigoCategoria() {
+        return codigoCategoria;
     }
 
-    public int getCodigoCate() {
-        return codigoCate;
+    public void setCodigoCategoria(int codigoCategoria) {
+        this.codigoCategoria = codigoCategoria;
     }
 
-    public void setCodigoCate(int codigoCate) {
-        this.codigoCate = codigoCate;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public String getTipoCate() {
-        return tipoCate;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public void setTipoCate(String tipoCate) {
-        this.tipoCate = tipoCate;
+    public String getNombreCate() {
+        return nombreCate;
     }
 
-    
-    
-    
+    public void setNombreCate(String nombreCate) {
+        this.nombreCate = nombreCate;
+    }
+
+
 }
+

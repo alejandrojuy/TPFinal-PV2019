@@ -20,10 +20,10 @@ public class Producto implements Serializable{
     private int    stock;
     private String deposito;
     private String estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
-    private Categoria categoria;
+    private Categoria categoria; 
     public Producto() {
     }
-
+    //constructor
     public Producto(int codigo, String marca, String nombre, double precio, int stock, String deposito, String estado, Categoria categoria) {
         this.codigo = codigo;
         this.marca = marca;
@@ -35,11 +35,13 @@ public class Producto implements Serializable{
         this.categoria = categoria;
     }
 
-    public Producto(int codigo, double precio, String nombre) {
+    public Producto(int codigo,double precio, String nombre) {
         this.codigo = codigo;
+        this.nombre = nombre;
         this.precio = precio;
-         this.nombre = nombre;
     }
+    
+    //gets y sets 
 
     public int getCodigo() {
         return codigo;
@@ -104,7 +106,7 @@ public class Producto implements Serializable{
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
+    
 
    @Override
     public String toString() {

@@ -60,7 +60,7 @@ public class UsuarioFormBean {
     public boolean isEsAdministrador() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance()
                 .getExternalContext().getSessionMap().get("usuario");
-        if (usuario.getRol().getNombre().equals("Administracion")) {
+        if (usuario.getRol().getTipoRol().equals("Administracion")) {
             esAdministrador = true;
         } else {
             esAdministrador = false;
@@ -79,7 +79,7 @@ public class UsuarioFormBean {
     public boolean isEsUsuario() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance()
                 .getExternalContext().getSessionMap().get("usuario");
-        if (usuario.getRol().getNombre().equals("UsuarioComun")) {
+        if (usuario.getRol().getTipoRol().equals("UsuarioComun")) {
             esUsuario = true;
         } else {
             esUsuario = false;

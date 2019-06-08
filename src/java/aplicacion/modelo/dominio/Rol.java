@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Rol implements Serializable {
 
     private int codigo;
-    private String nombre;
+    private String tipoRol;
     private String descripcion;
     private String borrado;
 
@@ -22,13 +22,13 @@ public class Rol implements Serializable {
     public Rol() {
     }
 
-    public Rol(int codigo, String nombre, String descripcion, String borrado) {
+    public Rol(int codigo, String tipoRol, String descripcion, String borrado) {
         this.codigo = codigo;
-        this.nombre = nombre;
+        this.tipoRol = tipoRol;
         this.descripcion = descripcion;
         this.borrado = borrado;
     }
-    
+
     //Getters & Setters
 
     public int getCodigo() {
@@ -39,12 +39,12 @@ public class Rol implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTipoRol() {
+        return tipoRol;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipoRol(String tipoRol) {
+        this.tipoRol = tipoRol;
     }
 
     public String getDescripcion() {
@@ -62,8 +62,7 @@ public class Rol implements Serializable {
     public void setBorrado(String borrado) {
         this.borrado = borrado;
     }
-    
-    
+
     
 
 }

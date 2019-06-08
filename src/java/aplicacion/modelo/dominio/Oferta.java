@@ -15,29 +15,69 @@ import java.util.List;
  * @author jaimito
  */
 public class Oferta implements Serializable{
-    private Producto ofer_producto;
+    private int codigoOferta;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private String nombreOferta;
+    private Producto productoEnOferta;
     private List<Producto> listadoOfertas;
-    private Date Oferta_tiempo;
-    private double ofer_descuento;
+    private double precioOferta;
 
+    //constructors
     public Oferta() {
     listadoOfertas = new ArrayList();
     
     }
 
-    public Oferta(Producto ofer_producto, List<Producto> listadoOfertas, Date Oferta_tiempo, double ofer_descuento) {
-        this.ofer_producto = ofer_producto;
+    public Oferta(int codigoOferta, Date fechaInicio, Date fechaFin, String nombreOferta, Producto productoEnOferta, List<Producto> listadoOfertas, double precioOferta) {
+        this.codigoOferta = codigoOferta;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.nombreOferta = nombreOferta;
+        this.productoEnOferta = productoEnOferta;
         this.listadoOfertas = listadoOfertas;
-        this.Oferta_tiempo = Oferta_tiempo;
-        this.ofer_descuento = ofer_descuento;
+        this.precioOferta = precioOferta;
+    }
+    //gets y sets
+
+    public int getCodigoOferta() {
+        return codigoOferta;
     }
 
-    public Producto getOfer_producto() {
-        return ofer_producto;
+    public void setCodigoOferta(int codigoOferta) {
+        this.codigoOferta = codigoOferta;
     }
 
-    public void setOfer_producto(Producto ofer_producto) {
-        this.ofer_producto = ofer_producto;
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getNombreOferta() {
+        return nombreOferta;
+    }
+
+    public void setNombreOferta(String nombreOferta) {
+        this.nombreOferta = nombreOferta;
+    }
+
+    public Producto getProductoEnOferta() {
+        return productoEnOferta;
+    }
+
+    public void setProductoEnOferta(Producto productoEnOferta) {
+        this.productoEnOferta = productoEnOferta;
     }
 
     public List<Producto> getListadoOfertas() {
@@ -48,23 +88,13 @@ public class Oferta implements Serializable{
         this.listadoOfertas = listadoOfertas;
     }
 
-    public Date getOferta_tiempo() {
-        return Oferta_tiempo;
+    public double getPrecioOferta() {
+        return precioOferta;
     }
 
-    public void setOferta_tiempo(Date Oferta_tiempo) {
-        this.Oferta_tiempo = Oferta_tiempo;
+    public void setPrecioOferta(double precioOferta) {
+        this.precioOferta = precioOferta;
     }
-
-    public double getOfer_descuento() {
-        return ofer_descuento;
-    }
-
-    public void setOfer_descuento(double ofer_descuento) {
-        this.ofer_descuento = ofer_descuento;
-    }
-    
-    
     
     
     
