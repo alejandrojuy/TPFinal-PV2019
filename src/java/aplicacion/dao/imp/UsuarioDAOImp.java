@@ -7,8 +7,9 @@ package aplicacion.dao.imp;
 
 import aplicacion.dao.IUsuarioDAO;
 import aplicacion.modelo.dominio.Usuario;
-import aplicacion.modelo.utils.ListadoUsuarios;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.context.FacesContext;
 
@@ -19,12 +20,12 @@ import javax.faces.context.FacesContext;
 public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
 
     private List<Usuario> listaUsuarios;
-    private ListadoUsuarios listadoUsuarios;
+    
 
     //Constructor
     public UsuarioDAOImp() {
-        listaUsuarios = new ListadoUsuarios().getListadoUsuarios();
-        listadoUsuarios = new ListadoUsuarios();
+        
+        listaUsuarios = new ArrayList();
     }
 
     //Metodos
@@ -49,17 +50,7 @@ public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
     @Override
     public void crearUsuario(Usuario usuario) {
         usuario.setBorrado("N");
-        listadoUsuarios.agregar(usuario);
+//        listadoUsuarios.agregar(usuario);
     }
-
-    @Override
-    public void eliminarUsuario(Usuario usuario) {
-        listadoUsuarios.eliminar(usuario);
-    }
-
-    @Override
-    public void modificarUsuario(Usuario usuario) {
-        listadoUsuarios.modificar(usuario);
-    }
-
+ 
 }

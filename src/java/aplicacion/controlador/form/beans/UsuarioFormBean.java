@@ -7,7 +7,7 @@ package aplicacion.controlador.form.beans;
 
 import aplicacion.controlador.beans.UsuarioBean;
 import aplicacion.modelo.dominio.Usuario;
-import aplicacion.modelo.utils.ListadoRoles;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -22,7 +22,6 @@ import javax.faces.context.FacesContext;
 @ViewScoped
 public class UsuarioFormBean {
 
-    boolean esAdministrador;
     boolean esUsuario;
 
     @ManagedProperty(value = "#{usuarioBean}")
@@ -42,44 +41,27 @@ public class UsuarioFormBean {
    
     //Agregar nuevo Usuario Final
     public void agregarUsuario() {
-        usuarioBean.getUsuario().setRol(new ListadoRoles().getListaRoles().get(1));
+        usuarioBean.getUsuario().setRol("Usuario Comun");
         usuarioBean.agregarUsuario();
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Exito", "Se agrego un usuario correctamente"));
     }
 
     //Agregar nuevo Usuario Administrador
-    public void agregarUsuarioAdministrador() {
-        usuarioBean.getUsuario().setRol(new ListadoRoles().getListaRoles().get(0));
-        usuarioBean.agregarUsuario();
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Exito", "Se agrego un usuario Administrador correctamente"));
-    }
+    
 
     //Getters & Setters
-    public boolean isEsAdministrador() {
-        Usuario usuario = (Usuario) FacesContext.getCurrentInstance()
-                .getExternalContext().getSessionMap().get("usuario");
-        if (usuario.getRol().getTipoRol().equals("Administracion")) {
-            esAdministrador = true;
-        } else {
-            esAdministrador = false;
-        }
-        return esAdministrador;
-    }
+ 
     
     public void mostrarLogin(){
      FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
-
-    public void setEsAdministrador(boolean esAdministrador) {
-        this.esAdministrador = esAdministrador;
-    }
+ 
 
     public boolean isEsUsuario() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance()
                 .getExternalContext().getSessionMap().get("usuario");
-        if (usuario.getRol().getTipoRol().equals("UsuarioComun")) {
+        if (usuario.getRol().equals(usuario.getRol())) {
             esUsuario = true;
         } else {
             esUsuario = false;

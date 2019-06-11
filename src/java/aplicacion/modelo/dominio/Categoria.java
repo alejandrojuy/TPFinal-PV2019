@@ -12,27 +12,29 @@ import java.io.Serializable;
  * @author jaimito
  */
 public class Categoria  implements Serializable{
-   private int codigoCategoria; 
+   private int codigoCate; 
    private  String descripcion;
    private  String nombreCate;
 
     public Categoria() {
     }
 //constructor
-    public Categoria(int codigoCategoria, String descripcion, String nombreCate) {
-        this.codigoCategoria = codigoCategoria;
+
+    public Categoria(int codigoCate, String descripcion, String nombreCate) {
+        this.codigoCate = codigoCate;
         this.descripcion = descripcion;
         this.nombreCate = nombreCate;
     }
+    
    
     //gets y sets 
 
-    public int getCodigoCategoria() {
-        return codigoCategoria;
+    public int getCodigoCate() {
+        return codigoCate;
     }
 
-    public void setCodigoCategoria(int codigoCategoria) {
-        this.codigoCategoria = codigoCategoria;
+    public void setCodigoCate(int codigoCate) {
+        this.codigoCate = codigoCate;
     }
 
     public String getDescripcion() {
@@ -51,6 +53,7 @@ public class Categoria  implements Serializable{
         this.nombreCate = nombreCate;
     }
 
+   
 
 }
 

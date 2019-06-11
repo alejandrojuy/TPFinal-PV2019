@@ -27,14 +27,14 @@ public class Usuario implements Serializable{
     private int telefono;
     private String email;
     private String borrado;
-    private Rol rol;
+    private String rol;
     
     //Constructores
 
     public Usuario() {
     }
 
-    public Usuario(String usuario, String password, int dni, String nombre, String apellido, String sexo, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, int telefono, String email, String borrado, Rol rol) {
+    public Usuario(String usuario, String password, int dni, String nombre, String apellido, String sexo, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, int telefono, String email, String borrado, String rol) {
         this.usuario = usuario;
         this.password = password;
         this.dni = dni;
@@ -50,9 +50,6 @@ public class Usuario implements Serializable{
         this.borrado = borrado;
         this.rol = rol;
     }
-    
-    
-    //Getters & Setters
 
     public String getUsuario() {
         return usuario;
@@ -158,12 +155,16 @@ public class Usuario implements Serializable{
         this.borrado = borrado;
     }
 
-    public Rol getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(String rol) {
         this.rol = rol;
+    }
+
+
+
     }
 
     
@@ -171,4 +172,4 @@ public class Usuario implements Serializable{
     
     
     
-}
+
