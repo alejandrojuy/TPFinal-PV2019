@@ -12,22 +12,28 @@ import java.io.Serializable;
  * @author jaimito
  */
 public class VentaProducto implements Serializable{
+    private int codigo;
     private Venta venta;
     private Producto producto;
     private int cantidad;
     private boolean entregado;
     private double importe;
+    
+    //Constructor
 
     public VentaProducto() {
     }
 
-    public VentaProducto(Venta venta, Producto producto, int cantidad, boolean entregado, double importe) {
+    public VentaProducto(int codigo,Venta venta, Producto producto, int cantidad, boolean entregado, double importe) {
+        this.codigo = codigo;
         this.venta = venta;
         this.producto = producto;
         this.cantidad = cantidad;
         this.entregado = entregado;
         this.importe = importe;
     }
+    
+    //Setters & Getters
 
     public Venta getVenta() {
         return venta;
@@ -68,6 +74,16 @@ public class VentaProducto implements Serializable{
     public void setImporte(double importe) {
         this.importe = importe;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
+    
 
     
 }

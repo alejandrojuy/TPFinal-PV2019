@@ -13,7 +13,7 @@ import java.util.Date;
  * @author jaimito
  */
 public class Producto implements Serializable{
-    private int    codigo;
+    private int codigo;
     private String marca;
     private String nombre;
     private double precio;

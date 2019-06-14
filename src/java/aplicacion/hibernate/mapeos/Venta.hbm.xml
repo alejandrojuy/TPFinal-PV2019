@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="aplicacion.dominio.Venta" optimistic-lock="version" 
+           catalog="muebleria" table="ventas">
+        <id name="codigoVenta" type="integer">
+            <column name="ven_codigo_venta" length="12"/>
+            <generator class="identity"/>
+        </id>
+        <property name="descuentoTotal" type="double">
+            <column name="ven_descuento_total" length="5" not-null="true"/>
+        </property>
+        
+        <property name="subTotalVenta" type="double">
+            <column name="ven_sub_total" length="5" not-null="true"/>
+        </property>
+        
+        <property name="totalVenta" type="double">
+            <column name="ven_total_venta" length="5" not-null="true"/>
+        </property>
+        
+        <property name="fechaVenta" type="date">
+            <column name="ven_fecha_venta" length="10" not-null="true"/>
+        </property>
+        
+        <property name="hora" type="time">
+            <column name="ven_hora" length="10" not-null="true"/>
+        </property>
+        
+        <property name="estado" type="string">
+            <column name="ven_estado" length="20" not-null="true"/>
+        </property>
+        
+        <many-to-one name="usuario" class="aplicacion.modelo.dominio.Usuario"
+                     fetch="join           
+            <column name="ven_usuario" not-null="true"/>
+        </many-to-one>
+        
+        <property name="tipoFactura" type="string">
+            <column name="ven_tipo_factura" length="20" not-null="true"/>
+        </property>
+        
+        <set name="listaVentaProductos" table="ventas_listaProductos" 
+             fetch="join" cascade="all">
+            <key column="ven_codigo_venta"/>
+            <many-to-many class="aplicacion.dominio.VentaProducto" column="venProd_codigo"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

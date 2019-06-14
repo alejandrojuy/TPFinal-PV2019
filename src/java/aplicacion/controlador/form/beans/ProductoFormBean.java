@@ -8,6 +8,9 @@ package aplicacion.controlador.form.beans;
 import aplicacion.controlador.beans.ProductoBean;
 import aplicacion.modelo.dominio.Producto;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -21,12 +24,26 @@ import javax.faces.bean.ViewScoped;
 public class ProductoFormBean implements Serializable{
     @ManagedProperty(value="#{productoBean}")
     private ProductoBean productoBean;
-     private Producto producto;
+    private Producto producto;
+    private List<String> images;
     
-    //definiendo construcctor
+    //construcctor
     public ProductoFormBean() {
         producto = new Producto();
+        images = new ArrayList<String>();
     }
+    
+     @PostConstruct
+    public void init() {
+        mostrarImagenes();
+    }
+    
+    public void mostrarImagenes(){
+        for (int i = 1; i <= 12; i++) {
+            images.add("muebleria" + i + ".jpg");
+        }
+    }
+    
     public void d(){
         
         productoBean.crearProducto(producto);
@@ -48,6 +65,14 @@ public class ProductoFormBean implements Serializable{
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
     
 }
