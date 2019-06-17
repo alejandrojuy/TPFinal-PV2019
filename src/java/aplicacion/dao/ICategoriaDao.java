@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tests;
+package aplicacion.dao;
+
+import aplicacion.modelo.dominio.Categoria;
 
 /**
  *
  * @author jaimito
  */
-public class PrincipalUsuario {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public interface ICategoriaDao {
+    public void crear(Categoria categoria);
+    
     
 }

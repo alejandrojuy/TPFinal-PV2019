@@ -26,7 +26,7 @@ public class Usuario implements Serializable{
     private Date fechaNacimiento;
     private int telefono;
     private String email;
-    private String borrado;
+    private boolean borrado;
     private String rol;
     
     //Constructores
@@ -34,7 +34,7 @@ public class Usuario implements Serializable{
     public Usuario() {
     }
 
-    public Usuario(String usuario, String password, int dni, String nombre, String apellido, String sexo, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, int telefono, String email, String borrado, String rol) {
+    public Usuario(String usuario, String password, int dni, String nombre, String apellido, String sexo, String direccion, String provincia, int codigoPostal, Date fechaNacimiento, int telefono, String email, boolean borrado, String rol) {
         this.usuario = usuario;
         this.password = password;
         this.dni = dni;
@@ -50,6 +50,7 @@ public class Usuario implements Serializable{
         this.borrado = borrado;
         this.rol = rol;
     }
+
 
     public String getUsuario() {
         return usuario;
@@ -147,14 +148,16 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public String getBorrado() {
+    public boolean isBorrado() {
         return borrado;
     }
 
-    public void setBorrado(String borrado) {
+    public void setBorrado(boolean borrado) {
         this.borrado = borrado;
     }
 
+
+    
     public String getRol() {
         return rol;
     }

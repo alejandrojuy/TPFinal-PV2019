@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+   <class  name="aplicacion.modelo.dominio.Categoria" optimistic-lock="version" 
+            table="categorias" catalog="prueba">
+        <id name="codigoCate" type="int">
+          <column name="cate_codigo" length="20"/>
+          <generator class="assigned"/>
+        </id>
+   
+        <property name="descripcion" type="string">
+            <column name="cate_descripcion" length="100" not-null="true" />
+        </property>
+        <property name="nombreCate" type="string">
+            <column name="cate_nombre" length="15" not-null="true" />
+        </property>
+       
+   
+   </class>
+   
+</hibernate-mapping>

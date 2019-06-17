@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class  name="aplicacion.modelo.dominio.Producto" optimistic-lock="version" 
+            table="productos" catalog="prueba">
+        <id name="codigo" type="int">
+          <column name="prod_codigo" length="10" not-null="true"/>
+          <generator class="assigned"/>
+        </id>
+      <many-to-one name="categoria" class="aplicacion.modelo.dominio.Categoria" fetch="join">
+        <column name="pub_categoria" not-null="true"/>
+       </many-to-one>
+
+   <property name="precio" type="double">
+            <column name="prod_precio" length="10" not-null="true" />
+        </property>
+          
+        <property name="stock" type="int">
+            <column name="prod_stock" length="30" not-null="true" />
+        </property>
+        <property name="marca" type="string">
+            <column name="prod_marca" length="15" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="prod_nombre" length="20" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="prod_descripcion" length="50" not-null="true" />
+        </property>
+        <property name="deposito" type="string">
+            <column name="prod_deposito" length="15" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="prod_estado"  not-null="true" />
+        </property>
+
+
+   </class>
+</hibernate-mapping>
+ <!--aca le digo que cree el atributo de tipo categoria 
+que ponga en la columna pub_categoriay de aqui vamos a sacar el codigo y descripcion y nombre de categoria
+    // seria muchos productos tienen una categoria-->

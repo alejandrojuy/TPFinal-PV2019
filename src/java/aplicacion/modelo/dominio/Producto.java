@@ -6,7 +6,7 @@
 package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
-import java.util.Date;
+ 
 
 /**
  *
@@ -14,34 +14,38 @@ import java.util.Date;
  */
 public class Producto implements Serializable{
     private int    codigo;
+    private double precio;
+    private Categoria categoria; 
+    private int    stock;
     private String marca;
     private String nombre;
-    private double precio;
-    private int    stock;
+    private String descripcion;
     private String deposito;
-    private String estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
-    private Categoria categoria; 
+    private boolean estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
+
     public Producto() {
     }
-    //constructor
-    public Producto(int codigo, String marca, String nombre, double precio, int stock, String deposito, String estado, Categoria categoria) {
-        this.codigo = codigo;
+    //constructor 
+
+    public Producto(int codigo, double precio, Categoria categoria, int stock, String marca, String nombre, String descripcion, String deposito, boolean estado) {
+      this.codigo = codigo;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.stock = stock;
         this.marca = marca;
         this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
+        this.descripcion = descripcion;
         this.deposito = deposito;
         this.estado = estado;
-        this.categoria = categoria;
     }
-
+    
     public Producto(int codigo,double precio, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
     }
     
-    //gets y sets 
+   // gets y sets 
 
     public int getCodigo() {
         return codigo;
@@ -49,6 +53,30 @@ public class Producto implements Serializable{
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getMarca() {
@@ -67,20 +95,12 @@ public class Producto implements Serializable{
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getDeposito() {
@@ -91,27 +111,15 @@ public class Producto implements Serializable{
         this.deposito = deposito;
     }
 
-    public String getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
     
-
-   @Override
-    public String toString() {
-        return "Codigo: "+ this.codigo+" "+ "Nombre: "+this.nombre+" "+"Precio: "+" "+ this.precio;
-    }
+  
     
-   
 }

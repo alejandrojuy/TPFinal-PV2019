@@ -6,6 +6,8 @@
 package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -15,7 +17,7 @@ public class Categoria  implements Serializable{
    private int codigoCate; 
    private  String descripcion;
    private  String nombreCate;
-
+    
     public Categoria() {
     }
 //constructor
@@ -24,7 +26,8 @@ public class Categoria  implements Serializable{
         this.codigoCate = codigoCate;
         this.descripcion = descripcion;
         this.nombreCate = nombreCate;
-    }
+        
+         }
     
    
     //gets y sets 
@@ -53,6 +56,7 @@ public class Categoria  implements Serializable{
         this.nombreCate = nombreCate;
     }
 
+     
    
 
 }
