@@ -40,6 +40,7 @@ public class TestCrearProducto {
         producto.setDescripcion("mejor de lo mejor");
         producto.setDeposito("vida");
         producto.setEstado(true);
+        producto.setImagenProducto("sin imagen ");
         ida.crearProducto(producto);
     }
     

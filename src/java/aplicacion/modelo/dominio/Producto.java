@@ -21,14 +21,15 @@ public class Producto implements Serializable{
     private String nombre;
     private String descripcion;
     private String deposito;
+    
     private boolean estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
-
+    private String imagenProducto;
     public Producto() {
     }
     //constructor 
 
-    public Producto(int codigo, double precio, Categoria categoria, int stock, String marca, String nombre, String descripcion, String deposito, boolean estado) {
-      this.codigo = codigo;
+    public Producto(int codigo, double precio, Categoria categoria, int stock, String marca, String nombre, String descripcion, String deposito, boolean estado,String imagenProducto) {
+        this.codigo = codigo;
         this.precio = precio;
         this.categoria = categoria;
         this.stock = stock;
@@ -37,6 +38,7 @@ public class Producto implements Serializable{
         this.descripcion = descripcion;
         this.deposito = deposito;
         this.estado = estado;
+        this.imagenProducto = imagenProducto;
     }
     
     public Producto(int codigo,double precio, String nombre) {
@@ -117,6 +119,14 @@ public class Producto implements Serializable{
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public String getImagenProducto() {
+        return imagenProducto;
+    }
+
+    public void setImagenProducto(String imagenProducto) {
+        this.imagenProducto = imagenProducto;
     }
 
     

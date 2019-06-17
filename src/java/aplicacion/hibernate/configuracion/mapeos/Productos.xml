@@ -37,6 +37,9 @@
         <property name="estado" type="boolean">
             <column name="prod_estado"  not-null="true" />
         </property>
+        <property name="imagenProducto" type="string">
+            <column name="prod_imagen"  not-null="true" />
+        </property>
 
 
    </class>
