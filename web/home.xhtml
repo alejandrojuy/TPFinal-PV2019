@@ -2,11 +2,36 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/principalTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <p:galleria value="#{productoForm.images}" var="image" panelWidth="1330" panelHeight="400" showCaption="true">
-            <p:graphicImage name="images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
-        </p:galleria>
+        <div class="ui-g">
+             <div class="ui-g-12 ui-md-3" style=" "> 
+              
+               <h:form>
+                 <h3>Aprovecha las Ofertas </h3>
+                <p:clock pattern="HH:mm:ss"   />
+             </h:form>
+             </div>
+            <div class="ui-grid-responsive" style="background-color: blue">
+                
+                <p:galleria  value="#{galeriaBean.images}" var="image" panelWidth="600" panelHeight="400" style=" "  showCaption="true" autoPlay="true">
+                    <p:graphicImage cache="false" name="images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+                <p:panelGrid columns="1" styleClass="wf" style="text-align: center;">
+                 
+                </p:panelGrid>
+                </p:galleria>
+               
+                </div>
+                <div class="ui-g-12 ui-md-2 ui-g-nopad" style=" ">
+                </div>
+       </div>
+     
+ 
+        <p:dialog   header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+            <h:outputText value="This is a Modal Dialog." />
+        </p:dialog>
     </ui:define>
 </ui:composition>

@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="aplicacion.dominio.Venta" optimistic-lock="version" 
-           catalog="muebleria" table="ventas">
+    <class name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" 
+           catalog="prueba" table="ventas">
         <id name="codigoVenta" type="integer">
             <column name="ven_codigo_venta" length="12"/>
             <generator class="identity"/>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class  name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" 
+            table="usuarios" catalog="prueba">
+        <id name="usuario" type="string">
+          <column name="usu_nombre_usuario" length="12" not-null="true"/>
+          <generator class="assigned"/>
+        </id>
+        <property name="password" type="string">
+            <column name="usu_password" length="100" not-null="true" />
+        </property>
+
+        <property name="dni" type="integer">
+            <column name="usu_dni" length="20" not-null="true" />
+        </property>
+
+        <property name="nombre" type="string">
+            <column name="usu_nombre" length="30" not-null="true" />
+        </property>
+        
+        <property name="apellido" type="string">
+            <column name="usu_apellido" length="15" not-null="true" />
+        </property>
+        
+        <property name="sexo" type="string">
+            <column name="usu_sexo" length="10" not-null="true" />
+        </property>
+        
+        <property name="direccion" type="string">
+            <column name="usu_direccion" length="30" not-null="true" />
+        </property>
+        
+        <property name="provincia" type="string">
+            <column name="usu_provincia" length="15" not-null="true" />
+        </property>
+        
+        <property name="codigoPostal" type="integer">
+            <column name="usu_codigoPostal" length="10" not-null="true" />
+        </property>
+        
+        <property name="fechaNacimiento" type="date">
+            <column name="usu_fechaNacimiento" length="10" not-null="true" />
+        </property>
+        
+        <property name="telefono" type="integer">
+            <column name="usu_telefono" length="10" not-null="true" />
+        </property>
+        
+        <property name="email" type="string">
+            <column name="usu_email" length="30" not-null="true" />
+        </property>
+        
+        <property name="borrado" type="boolean">
+            <column name="usu_borrado" length="2" not-null="true" />
+        </property>
+        
+        <property name="rol" type="string">
+            <column name="usu_rol" length="24" not-null="true" />
+        </property>
+        
+        
+        
+    </class>
+</hibernate-mapping>

@@ -26,7 +26,7 @@ public class TestCrearProducto {
         Categoria categoria = new Categoria();
      ICategoriaDao iCategoriaDao= new CategoriaDAOimpl();
         Producto producto= new Producto();
-        categoria.setCodigoCate(9921);
+        categoria.setCodigoCate(312);
         categoria.setDescripcion("992");
         categoria.setNombreCate("9921");
         iCategoriaDao.crear(categoria);//sin antes crear esta categoria me daba error taloco jaja

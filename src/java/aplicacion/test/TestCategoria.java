@@ -22,9 +22,9 @@ public class TestCategoria {
         ICategoriaDao iCategoriaDao = new CategoriaDAOimpl();
         Categoria categoria = new Categoria();
         
-        categoria.setCodigoCate(11118);
-        categoria.setDescripcion("categoria gallo Plumacategoria gallo llo Plumacategoria gallo Plumacategoria gallo Pluma");
-        categoria.setNombreCate("Bazar");
+        categoria.setCodigoCate(22312);
+        categoria.setDescripcion("va queriendo");
+        categoria.setNombreCate("lol");
         iCategoriaDao.crear(categoria);
     }
     

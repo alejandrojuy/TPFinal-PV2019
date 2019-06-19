@@ -22,20 +22,20 @@ public class TestCrearUsuario {
     public static void main(String[] args) {
         IUsuarioDAO ida= new UsuarioDAOImp();
         Usuario usuario = new Usuario();
-        usuario.setUsuario("pepito");
-        usuario.setPassword("root");
-        usuario.setDni(36351299);
-        usuario.setNombre("emanuel alejandro");
-        usuario.setApellido("zerpa");
-        usuario.setSexo("varon");
-        usuario.setDireccion("alto comedero");
-        usuario.setProvincia("Jujuy");
+        usuario.setUsuario("loll");
+        usuario.setPassword("333");
+        usuario.setDni(321);
+        usuario.setNombre("rrrrrrrrr");
+        usuario.setApellido("zerpa22");
+        usuario.setSexo("varon22");
+        usuario.setDireccion("comedero");
+        usuario.setProvincia("Jujuy22");
         usuario.setCodigoPostal(4600);
-        usuario.setCodigoPostal(4600);
+        
         usuario.setFechaNacimiento(new Date());
         usuario.setTelefono(43722);
         usuario.setEmail("dsa@hotmail.com");
-        usuario.setBorrado(false);
+        usuario.setBorrado(true);
         usuario.setRol("consumidor");
           ida.crearUsuario(usuario);
     }

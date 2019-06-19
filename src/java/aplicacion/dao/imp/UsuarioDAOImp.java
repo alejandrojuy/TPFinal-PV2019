@@ -62,5 +62,13 @@ public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
         return usuarioEncontrado;
     }
 
+    public List<Usuario> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Usuario> lista) {
+        this.lista = lista;
+    }
+
   
 }

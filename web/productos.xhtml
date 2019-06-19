@@ -1,16 +1,140 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./WEB-INF/templates/principalTemplate.xhtml">
 
             <ui:define name="content">
-                content
-            </ui:define>
+                <style type="text/css">
+                    .ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+                        text-align: center;     }
+                </style>
+                
+                <div class="ui-g-2"></div>
+                <div class="ui-g-8">
+                <p:panel id="pnlCelular" header="AMB Producto">
+                <p:growl id="mensajes"/>
+                <h:form  id="frmProducto">
+                    <h:panelGrid id="pnlAbmLibro"  columns="2" style="margin-bottom:10px" cellpadding="5" >
+                            <p:panelGrid columns="2">
+                                    
+                            <p:outputLabel for="txtNombre" value="Codigo" />
+                            <p:inputText id="txtNombre" value="#{productoFormBean.producto.nombre}" placeholder="Nombre Producto"   requiredMessage="Ingrese Nombre del Producto" required="true"/>
 
+                            <p:outputLabel for="txtCodigo" value="Codigo:" />
+                            <p:inputNumber id="txtCodigo" placeholder="Codigo de producto"  required="true" requiredMessage="Ingrese Codigo " disabled="false" 
+                                       minValue="0" maxValue="10000" value="#{productoFormBean.producto.codigo}" />
+                            <p:outputLabel for="txtPrecio" value="Precio" />
+                            <p:inputNumber id="txtPrecio" value="#{productoFormBean.producto.precio}" decimalPlaces="2"  minValue="0" required="true" requiredMessage="Ingrese un Precio para el producto"/>
+                           
+                            <p:outputLabel for="txtStock" value="Stock"/>
+                            <p:inputNumber id="txtStock" placeholder="Unidades del Producto" disabled="false" decimalPlaces="0"
+                                           minValue="0" maxValue="10000" value="#{productoFormBean.producto.stock}" required="true" requiredMessage="Ingrese cantidad de Stock del producto"/>
+
+                            <p:outputLabel for="txtMarca" value="Marca"/>
+                            <p:inputText id="txtMarca"   placeholder="Marca del Producto" value="#{productoFormBean.producto.marca}" required="true" requiredMessage="Ingrese Marca">
+                            </p:inputText>
+                           
+                            <p:outputLabel for="sltOne" value="Categoria" />
+                            <p:selectOneMenu  id="sltOne" value="#{productoFormBean.producto.categoria}" converter="omnifaces.SelectItemsConverter" label="Categoria"  required="true">
+                                <f:selectItem  itemLabel="Categoria" ></f:selectItem>
+                              <!-- <! select items  lo que muestra>--> <!-- <! selectOneMuenu value="donde lo guarda ">--><!--  atributo itemvalue lo que guarda   lo que muestra>-->
+                              <f:selectItems value="#{productoFormBean.lista}" var="cate" itemLabel="#{cate.nombreCate}" itemValue="#{cate}"/>
+                            </p:selectOneMenu>
+   
+                            <p:outputLabel for="txtDeposito" value="Deposito" />
+                            <p:inputText id="txtDeposito" value="#{productoFormBean.producto.deposito}" placeholder="Deposito del Producto" required="true" requiredMessage="Ingrese Deposito del Producto"/>
+
+                            <p:outputLabel for="txtEstado" value="Disponible" />
+                            <p:selectOneMenu id="txtEstado" value="#{productoFormBean.producto.estado}" style="width:125px">
+                                <f:selectItem itemLabel="Disponible" itemValue="true" />
+                                <f:selectItem itemLabel="No disponible" itemValue="false" />
+                            </p:selectOneMenu>
+
+                           <p:outputLabel for="txtImagen" value="Imagen" />
+                           <p:inputText id="txtImagen" value="#{productoFormBean.producto.imagenProducto}" placeholder="Nombre de la Imagen" required="true" requiredMessage="Ingrese nombre de la imagen del Producto"/>
+                         
+                           <p:outputLabel for="txtDescripcion" value="Descripcion" />
+                           <p:inputText id="txtDescripcion" value="#{productoFormBean.producto.descripcion}" placeholder="Descripcion del Producto" required="true" requiredMessage="Ingrese Descripcion del Producto"/>
+                                                    
+                           <p:commandButton id="btnMostrarTabla" value="Registrar"   actionListener="#{productoFormBean.cargarProducto()}" update=":frmProducto, :frmTblProductos:tblProductos, mensajes " oncomplete="PF('dlg').show()" icon="pi pi-check"/> 
+                           </p:panelGrid>
+                    </h:panelGrid>
+    
+
+                    <p:dialog header="Producto" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
+                        <p:panelGrid columns="2" id="display" columnClasses="label,value">
+                            <h:outputText value="Codigo:" />
+                            <h:outputText value="#{productoFormBean.producto.codigo}" />
+                            <h:outputText value="Nombre:" />
+                            <h:outputText value="#{productoFormBean.producto.nombre}" />
+                            <h:outputText value="Marca:" />
+                            <h:outputText value="#{productoFormBean.producto.marca}" />
+                            <h:outputText value="Precio:" />
+                            <h:outputText value="#{productoFormBean.producto.precio}" />
+                            <h:outputText value="Categoria:" />
+                            <h:outputText value="#{productoFormBean.producto.categoria.nombreCate}" />
+                            <h:outputText value="Stock:" />
+                            <h:outputText value="#{productoFormBean.producto.stock}" />
+                            <h:outputText value="Deposito:" />
+                            <h:outputText value="#{productoFormBean.producto.deposito}" />
+                            <h:outputText value="Descripcion:" />
+                            <h:outputText value="#{productoFormBean.producto.descripcion}" />
+                            <h:outputText value="Nombre de la Imagen:" />
+                            <h:outputText value="#{productoFormBean.producto.imagenProducto}" />
+                            <h:outputText value="Estado:" />
+                            <h:outputText value="#{productoFormBean.producto.estado}" />
+                    </p:panelGrid>
+                    </p:dialog> 
+                </h:form>            
+                <h:form id="frmTblProductos">
+                    <p:dataTable id="tblProductos" emptyMessage="vacio"  value="#{productoFormBean.listaProducto}" var="lib">
+                            <p:column headerText="Codigo" >
+                                    <p:outputLabel value="#{lib.codigo}"/> 
+                            </p:column>
+                            <p:column headerText="Precio"  >
+                            <p:outputLabel value="#{lib.precio}" >
+                                    <f:convertNumber type="currency" currencySymbol="$"/>
+                                    </p:outputLabel>
+                            </p:column>
+                            <p:column headerText="Nombre"  >
+                                    <p:outputLabel value="#{lib.codigo}"/>
+                            </p:column>
+ 
+                            <p:column headerText="Categoria-codigo"  >
+                                 <p:outputLabel value="#{lib.categoria.codigoCate}"/>
+                            </p:column>
+ 
+                            <p:column headerText="Categoria-nombre"  >
+                                 <p:outputLabel value="#{lib.categoria.nombreCate}"/>
+                            </p:column>
+ 
+                            <p:column headerText="Categoria-descripcion"  >
+                                 <p:outputLabel value="#{lib.categoria.descripcion}"/>
+                            </p:column>
+                            <p:column headerText="Fecha de Presenteacion"  >
+                                    <p:outputLabel value="">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </p:outputLabel>
+                            </p:column> 
+                            <p:column>
+                                    <p:commandButton value="Eliminar"   update="  mensajes" />
+                            </p:column>
+               
+               
+                     </p:dataTable>
+                    </h:form>
+              </p:panel>
+             </div>
+                <div class="ui-g-2"></div>
+                
+            </ui:define>
         </ui:composition>
 
     </body>

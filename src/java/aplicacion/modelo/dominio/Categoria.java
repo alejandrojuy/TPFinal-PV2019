@@ -6,8 +6,7 @@
 package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+
 
 /**
  *
@@ -54,6 +53,33 @@ public class Categoria  implements Serializable{
 
     public void setNombreCate(String nombreCate) {
         this.nombreCate = nombreCate;
+    }
+
+    @Override
+    public String toString() {
+        return "Categoria{" + "codigoCate=" + codigoCate + ", descripcion=" + descripcion + ", nombreCate=" + nombreCate + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.codigoCate;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Categoria other = (Categoria) obj;
+        if (this.codigoCate != other.codigoCate) {
+            return false;
+        }
+        return true;
     }
 
      

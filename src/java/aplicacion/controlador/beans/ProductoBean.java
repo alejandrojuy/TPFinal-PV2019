@@ -11,6 +11,9 @@ import javax.faces.bean.ViewScoped;
 import aplicacion.dao.IProductoDAO;
 import aplicacion.dao.imp.ProductoDAOImp;
 import aplicacion.modelo.dominio.Producto;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 /**
  *
  * @author jaimito
@@ -19,7 +22,7 @@ import aplicacion.modelo.dominio.Producto;
 @ViewScoped
 public class ProductoBean implements Serializable{
     private IProductoDAO iproductoDao;
-    
+ 
     //inicializando constuctor
     public ProductoBean() {
         iproductoDao = new ProductoDAOImp();
@@ -40,7 +43,12 @@ public class ProductoBean implements Serializable{
         this.iproductoDao = iproductoDao;
     }
     
+   // public class ImagesView {
+     
     
+     
+ 
     
+//}
     
 }

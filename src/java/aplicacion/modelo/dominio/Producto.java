@@ -21,7 +21,6 @@ public class Producto implements Serializable{
     private String nombre;
     private String descripcion;
     private String deposito;
-    
     private boolean estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
     private String imagenProducto;
     public Producto() {
@@ -129,7 +128,5 @@ public class Producto implements Serializable{
         this.imagenProducto = imagenProducto;
     }
 
-    
-  
     
 }

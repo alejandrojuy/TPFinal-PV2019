@@ -6,7 +6,7 @@
 package aplicacion.dao;
 
 import aplicacion.modelo.dominio.Producto;
-import aplicacion.modelo.dominio.Usuario;
+
 import java.util.List;
 
 /**
