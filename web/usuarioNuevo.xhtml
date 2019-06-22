@@ -2,54 +2,82 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Usuario Nuevo</title>
     </h:head>
-    <h:body>
+    <h:body style="background-color: gray">
         <h:form>
             <div>
                 <p:growl id="mensajesNuevoUsuario" showDetail="true"/>
-                <p:panel id="pnlPrincipalNuevoUsuario" header="Crear nuevo Usuario"/>
-                <p:panelGrid columns="2">
-                    <!--DNI-->
-                    <p:outputLabel for="numDni" value="DNI"/>
-                    <p:inputNumber id="numDni" value="#{usuarioFormBean.usuarioBean.usuario.dni}" required="true"
-                                   minValue="00000000" maxValue="99999999"/>
-                    <!--Nombre-->
-                    <p:outputLabel for="txtNombre" value="Nombre"/>
-                    <p:inputText id="txtNombre" value="#{usuarioFormBean.usuarioBean.usuario.nombre}" required="true"/>
-                    <!--Apellido-->
-                    <p:outputLabel for="txtApellido" value="Apellido"/>
-                    <p:inputText id="txtApellido" value="#{usuarioFormBean.usuarioBean.usuario.apellido}" required="true"/>
-                    <!--Usuario-->
-                    <p:outputLabel for="txtUsuario" value="Usuario"/>
-                    <p:inputText id="txtUsuario" value="#{usuarioFormBean.usuarioBean.usuario.usuario}" required="true"/>
-                    <!--Password-->
-                    <p:outputLabel for="txtPassword" value="Password"/>
-                    <p:inputText id="txtPassword" value="#{usuarioFormBean.usuarioBean.usuario.password}" required="true"/>
-                    <!--Email-->
-                    <p:outputLabel for="txtEmail" value="Email"/>
-                    <p:inputText id="txtEmail" value="#{usuarioFormBean.usuarioBean.usuario.email}" required="true"/>
-                    <!--Direccion-->
-                    <p:outputLabel for="txtDireccion" value="Direccion"/>
-                    <p:inputText id="txtDireccion" value="#{usuarioFormBean.usuarioBean.usuario.direccion}" required="true"/>
-                    <!--Provincia-->
-                    <p:outputLabel for="txtProvincia" value="Provincia"/>
-                    <p:selectOneMenu/>
-                    <!--CodigoPostal-->
-                    <p:outputLabel for="numCodigoPostal" value="Codigo Postal"/>
-                    <p:inputNumber id="numCodigoPostal" value="#{usuarioFormBean.usuarioBean.usuario.codigoPostal}" required="true"/>
-                    <!--Telefono-->
-                    <p:outputLabel for="txtTelefono" value="Telefono"/>
-                    <p:inputText id="txtTelefono" value="#{usuarioFormBean.usuarioBean.usuario.telefono}" required="true"/>
-                    <br></br>
+                <p:panel id="pnlPrincipalNuevoUsuario" header="Crear nuevo Usuario" style="width: 500px;margin-left: 30%">
+                    <p:panelGrid columns="3">
+                        <!--DNI-->
+                        <p:outputLabel for="numDni" value="DNI"/>
+                        <p:inputNumber id="numDni" value="" required="true"
+                                       minValue="00000000" maxValue="99999999">
+                            <f:validateLength maximum="8" minimum="10"/>
+                        </p:inputNumber>
+                        <!--Nombre-->
+                        <p:outputLabel for="txtNombre" value="Nombre"/>
+                        <p:inputText id="txtNombre" value="" required="true">
+                            <f:validateLength maximum="20" minimum="8"/>
+                        </p:inputText>
+                        <!--Apellido-->
+                        <p:outputLabel for="txtApellido" value="Apellido"/>
+                        <p:inputText id="txtApellido" value="" required="true">
+                            <f:validateLength maximum="20" minimum="8"/>
+                        </p:inputText>
+                        <!--Sexo-->
+                        <p:outputLabel for="lblSexoUsuario" value="Sexo:" />
+                        <p:selectOneRadio id="lblSexoUsuario" value="" required="true" requiredMessage="Seleccione sexo">
+                            <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                        </p:selectOneRadio>
+                        <!--Fecha de Nacimiento-->
+                        <p:outputLabel id="lblFechaNacimiento" value="Fecha de Nacimiento: " for="txtFechaNacimiento"/>
+                        <p:calendar  id="txtFechaNacimiento" value=""
+                                     required="true" requiredMessage="Ingrese Fecha de Nacimiento"/>
+                        <!--Usuario-->
+                        <p:outputLabel for="txtUsuario" value="Usuario"/>
+                        <p:inputText id="txtUsuario" value="" required="true" requiredMessage="Debe ingresar un usuario"/>
+                        <!--Password-->
+                        <p:outputLabel for="txtPassword" value="Password"/>
+                        <p:password id="txtPassword" value="" required="true" requiredMessage="Debe ingresar una Contraseña"/>
+                        <!--Email-->
+                        <p:outputLabel for="txtEmail" value="Email"/>
+                        <p:inputText id="txtEmail" value="" 
+                                     required="true" requiredMessage="Debe ingresar un email"
+                                     validatorMessage=" no es valido">
+                            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                        </p:inputText>
+                        <!--Direccion-->
+                        <p:outputLabel for="txtDireccion" value="Direccion"/>
+                        <p:inputText id="txtDireccion" value="" required="true"/>
+                        <!--Provincia-->
+                        <p:outputLabel id="lblProvincia" value="Provincia: "/>
+                        <p:selectOneMenu value="#{usuarioFormBean.listadoProvincias}"
+                                         required="true" requiredMessage="Seleccione provincia"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemLabel="Seleccionar Provincia" itemValue="" />
+                            <f:selectItems value="#{usuarioFormBean.usuarioNuevo.provincia}" />
+                        </p:selectOneMenu>
+                        <!--CodigoPostal-->
+                        <p:outputLabel for="numCodigoPostal" value="Codigo Postal"/>
+                        <p:inputNumber id="numCodigoPostal" value="" required="true"/>
+                        <!--Telefono-->
+                        <p:outputLabel for="txtTelefono" value="Telefono"/>
+                        <p:inputText id="txtTelefono" value="" required="true">
+                            <f:validator validatorId="vtelefono"/>
+                        </p:inputText>
+                    </p:panelGrid> 
                     <!--Botones-->
-                    <p:commandButton id="btnGuardarUsuario" value="Crear Usuario"
-                                     actionListener="#{usuarioFormBean.agregarUsuario()}"
-                                     action="#{usuarioFormBean.mostrarLogin()}"
-                                     style="margin: 20px"/>
-                </p:panelGrid>
+                        <p:commandButton id="btnGuardarUsuario" value="Crear Usuario"
+                                         style="margin-left: 110px;margin-top: 10px"/>
+                        <p:commandButton id="btnSalirGuardarUsuario" value="Salir"
+                                         style="margin-right: 40px;margin-top: 10px"/>
+                </p:panel>
             </div>
         </h:form>
     </h:body>

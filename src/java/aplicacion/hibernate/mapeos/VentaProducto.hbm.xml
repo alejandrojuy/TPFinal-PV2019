@@ -9,11 +9,6 @@
             <generator class="identity"/>
         </id>
         
-        <many-to-one name="venta" class="aplicacion.modelo.dominio.Venta"
-                     fetch="join           
-            <column name="ven_pro_venta" not-null="true"/>
-        </many-to-one>
-        
         <many-to-one name="producto" class="aplicacion.modelo.dominio.Producto"
                      fetch="join           
             <column name="ven_pro_producto" not-null="true"/>
@@ -21,10 +16,6 @@
         
         <property name="cantidad" type="integer">
             <column name="ven_pro_cantidad" length="5" not-null="true"/>
-        </property>
-        
-        <property name="entregado" type="yes_no">
-            <column name="ven_pro_entregado" length="1" not-null="true"/>
         </property>
         
         <property name="importe" type="double">

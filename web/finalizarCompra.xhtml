@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/principalTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="frmFinalizarCompra">    
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+            <p:wizard flowListener="#{userWizard.onFlowProcess}">
+                <!--Detalle de Facturacion-->
+                <p:tab id="tabDetalleFacturacion" title="Detalles de Facturacion">
+                    <p:panel header="Datos Personales">
+
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Nombre: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.nombre}"/>
+
+                            <h:outputText value="Apellido: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.apellido}"/>
+
+                            <h:outputText value="Telefono: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.telefono}"/>
+
+                            <h:outputText value="Direccion: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.direccion}"/>
+
+                            <h:outputText value="Codigo Postal: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.codigoPostal}"/>
+
+                            <h:outputText value="Provincia: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.provincia}"/>
+
+                            <h:outputText value="Email: " />
+                            <h:outputText value="#{ventaFormBean.usuarioLogueado.email}"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <!--Tu Pedido-->
+                <p:tab id="tabPedido" title="Pedido">
+                    <p:panel header="Tu Pedido">
+                        <p:dataTable var="pro" value="#{ventaFormBean.venta.listaVentaProductos}"
+                                     >
+                            <f:facet name="header">
+                                PRODUCTOS
+                            </f:facet>
+
+                            <p:column headerText="Producto">
+                                <h:outputText value="#{pro.producto.nombre}" />
+                            </p:column>
+
+                            <p:column headerText="Precio">
+                                <h:outputText value="#{pro.producto.precio}" />
+                            </p:column>
+
+                            <p:column headerText="Cantidad">
+                                <h:outputText value="#{pro.cantidad}" />
+                            </p:column>
+
+                            <p:column headerText="Importe">
+                                <h:outputText value="#{pro.importe}" />
+                            </p:column>
+                        </p:dataTable>
+                </p:tab>
+                <!--Opcion de Pago-->  
+                <p:tab id="contact" title="Pago">
+                    <p:panel header="Seleccionar Modo de Pago">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <p:outputLabel id="lblModoDePago" value="Modo de Pago: "/>
+                            <p:selectOneMenu value="#{ventaFormBean.modosDePago}"
+                                             required="true" requiredMessage="Seleccione provincia"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItem itemLabel="Seleccionar Modo de Pago" itemValue="" />
+                                <f:selectItems value="#{ventaFormBean.venta.tipoFactura}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <p:commandButton value="Realizar Compra" actionListener="#{ventaFormBean.agregarVenta()}" update="growl" process="@this"/>
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/principalTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <p:growl id="growlCarrito" showDetail="true" sticky="true" /> 
+        <h:form id="frmCarrito">
+            <p:panel style="text-align: center">
+                Carrito de Compras
+            </p:panel>
+            <!--Productos Agregados al carrito de Compras-->
+            <p:dataTable var="pro" value="#{ventaFormBean.listaDeVentasProductos}"
+                         >
+                <f:facet name="header">
+                    PRODUCTOS
+                </f:facet>
+                
+                <p:column headerText="Producto">
+                    <h:outputText value="#{pro.producto.nombre}" />
+                </p:column>
+
+                <p:column headerText="Precio">
+                    <h:outputText value="#{pro.producto.precio}" />
+                </p:column>
+
+                <p:column headerText="Cantidad">
+                    <h:outputText value="#{pro.cantidad}" />
+                </p:column>
+                
+                <p:column headerText="Importe">
+                    <h:outputText value="#{pro.importe}" />
+                </p:column>
+                
+                <p:column headerText="Opciones">
+                     <p:commandButton icon="ui-icon-trash" actionListener="#{ventaFormBean.quitarProductoDelCarrito(pro)}"
+                                     update="frmCarrito"/>
+                </p:column>
+            </p:dataTable>
+            <!--Total de la compra-->
+            <p:panel id="PnlTotalCarrito" header="TOTAL DEL CARRITO" style="margin-top: 10px;margin-bottom:10px;margin-left: 500px;width: 400px">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:outputLabel value="Total:"/>
+                    <p:inputNumber value="#{ventaFormBean.calcularImporteDelCarrito()}"/>
+                    <p:commandButton value="CONFIRMAR COMPRA" actionListener="#{ventaFormBean.crearNuevaVenta()}"
+                                     action="finalizarCompra"/>
+                    <p:commandButton value="Salir" action="home"/>
+                </h:panelGrid>
+            </p:panel>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

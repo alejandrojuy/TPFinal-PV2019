@@ -13,13 +13,13 @@
             </f:facet>
         </h:head>
 
-        <h:body>
+        <h:body style="background-color: gray">
             <h:form id="frmLogin">
                 <div class="box-login">
                     <p:growl id="mensajes" showDetail="true"/>
-                    <p:panel id="pnlPrincipal" header="Login de Usuario" >
+                    <p:panel id="pnlPrincipal" header="Login de Usuario" style="width: 400px;margin-left: 32%;margin-top: 10%">
                         <h:panelGrid columns="2">
-                            <p:outputLabel for="txtUsuario" value="usuario"/>
+                            <p:outputLabel for="txtUsuario" value="Usuario"/>
                             <p:inputText id="txtUsuario" placeholder="ingrese su Usuario"
                                          required="true" requiredMessage="Debe ingresar su Usuario"
                                          value="#{loginFormBean.usuario}"/>
@@ -27,12 +27,15 @@
                             <p:password id="txtPassword" placeholder="Ingrese su Password"
                                         required="true" requiredMessage="Debe ingresar su Password"
                                         value="#{loginFormBean.password}"/>
-                            <br></br>
-                            <p:commandButton id="btnLogin" value="Aceptar" update="mensajes" 
-                                             style="margin: 20px" action="#{loginFormBean.verificarCredenciales()}"/>
+                            
                         </h:panelGrid>
-                    </p:panel>
-                    <p:panel>
+                        <h:panelGrid columns="2">
+                                <p:commandButton id="btnLogin" value="Aceptar" update="mensajes" 
+                                                 style="margin-left: 80px;margin-top: 10px;margin-bottom: 10px" action="#{loginFormBean.verificarCredenciales()}"/>
+                                <p:commandButton id="btnSalirLoginUsuario" value="Salir"
+                                                 style="margin-right: 80px;margin-top: 10px;margin-bottom: 10px"
+                                                 action="loginHome"/>
+                        </h:panelGrid>
                         <p:panelGrid>
                             <p:outputLabel value="Eres nuevo?"/>
                             <p:commandLink value="Nuevo Usuario"/>

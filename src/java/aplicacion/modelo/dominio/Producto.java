@@ -13,10 +13,10 @@ import java.io.Serializable;
  * @author jaimito
  */
 public class Producto implements Serializable{
-    private int    codigo;
+    private int codigo;
     private double precio;
     private Categoria categoria; 
-    private int    stock;
+    private int stock;
     private String marca;
     private String nombre;
     private String descripcion;
@@ -39,8 +39,25 @@ public class Producto implements Serializable{
         this.estado = estado;
         this.imagenProducto = imagenProducto;
     }
+<<<<<<< Updated upstream
 
     public Producto(int codigo, String nombre, String imagenProducto) {
+=======
+    public Producto( double precio, Categoria categoria, int stock, String marca, String nombre, String descripcion, String deposito, boolean estado,String imagenProducto) {
+        this.precio = precio;
+        this.categoria = categoria;
+        this.stock = stock;
+        this.marca = marca;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.deposito = deposito;
+        this.estado = estado;
+        this.imagenProducto = imagenProducto;
+    }
+    
+    
+    public Producto(int codigo,double precio, String nombre) {
+>>>>>>> Stashed changes
         this.codigo = codigo;
         this.nombre = nombre;
         this.imagenProducto = imagenProducto;

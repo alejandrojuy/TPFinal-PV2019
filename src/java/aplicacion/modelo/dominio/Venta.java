@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
- * @author jaimito
+ * @author Cristian
  */
 public class Venta implements Serializable{
     private int codigoVenta;
@@ -24,16 +17,17 @@ public class Venta implements Serializable{
     private Date fechaVenta;
     private Date hora;
     private String estado;
+    private boolean entregado;
     private Usuario usuario;
     private String tipoFactura;
-    private Set<VentaProducto> listaVentaProductos;
+    private List<VentaProducto> listaVentaProductos;
     
     //constructor
     public Venta() {
-        listaVentaProductos= new HashSet();
+        listaVentaProductos= new ArrayList();
     }
 
-    public Venta(int codigoVenta, double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, Set<VentaProducto> listaVentaProductos) {
+    public Venta(int codigoVenta, double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, List<VentaProducto> listaVentaProductos) {
         this.codigoVenta = codigoVenta;
         this.descuentoTotal = descuentoTotal;
         this.subtotalVenta = subtotalVenta;
@@ -124,13 +118,23 @@ public class Venta implements Serializable{
         this.tipoFactura = tipoFactura;
     }
 
-    public Set<VentaProducto> getListaVentaProductos() {
+    public boolean isEntregado() {
+        return entregado;
+    }
+
+    public void setEntregado(boolean entregado) {
+        this.entregado = entregado;
+    }
+
+    public List<VentaProducto> getListaVentaProductos() {
         return listaVentaProductos;
     }
 
-    public void setListaVentaProductos(Set<VentaProducto> listaVentaProductos) {
+    public void setListaVentaProductos(List<VentaProducto> listaVentaProductos) {
         this.listaVentaProductos = listaVentaProductos;
     }
+
+    
 
     
     

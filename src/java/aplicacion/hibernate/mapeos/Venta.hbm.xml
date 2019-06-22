@@ -3,8 +3,13 @@
 
 <hibernate-mapping>
     <class name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" 
+<<<<<<< Updated upstream
            catalog="muebleria" table="ventas">
         <id name="codigoVenta" type="integer">
+=======
+           catalog="prueba" table="ventas">
+        <id name="codigoVenta" type="int">
+>>>>>>> Stashed changes
             <column name="ven_codigo_venta" length="12"/>
             <generator class="identity"/>
         </id>
@@ -28,8 +33,12 @@
             <column name="ven_hora" length="10" not-null="true"/>
         </property>
         
-        <property name="estado" type="string">
-            <column name="ven_estado" length="20" not-null="true"/>
+        <property name="estado" type="boolean">
+            <column name="ven_estado" length="5" not-null="true"/>
+        </property>
+        
+        <property name="entregado" type="string">
+            <column name="ven_estregado" length="20" not-null="true"/>
         </property>
         
         <many-to-one name="usuario" class="aplicacion.modelo.dominio.Usuario"

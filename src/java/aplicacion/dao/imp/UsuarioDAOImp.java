@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -88,3 +89,83 @@ public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
 
   
 }
+=======
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package aplicacion.dao.imp;
+
+import aplicacion.dao.IUsuarioDAO;
+import aplicacion.hibernate.configuracion.HibernateUtil;
+//import aplicacion.modelo.dominio.Rol;
+import aplicacion.modelo.dominio.Usuario;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
+/**
+ *
+ * @author Cristian
+ */
+
+public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
+
+    //Metodos
+    @Override
+    public List<Usuario> obtenerUsuarios() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Usuario.class);
+        List<Usuario> usuarios =  criteria.list();
+        session.close();
+        return usuarios;
+    }
+
+    @Override
+    public Usuario verificarCredenciales(String usuario, String password) {
+        Usuario usuarioEncontrado = null;
+
+        return usuarioEncontrado;
+    }
+
+    @Override
+    public void crearUsuario(Usuario usuario) {
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.save(usuario);
+        sesion.getTransaction().commit();
+        sesion.close();
+    }
+
+    @Override
+    public void eliminarUsuario(Usuario usuario) {
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.delete(usuario);
+        sesion.getTransaction().commit();
+        sesion.close();
+    }
+
+    @Override
+    public void modificarUsuario(Usuario usuario) {
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.update(usuario);
+        sesion.getTransaction().commit();
+        sesion.close();
+    }
+
+    /**@Override
+    public List<Rol> obtenerRoles() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Rol.class);
+        Set<Rol> roles = (Set<Rol>) criteria.list();
+        session.close();
+        return roles;
+    }**/
+
+}
+>>>>>>> Stashed changes

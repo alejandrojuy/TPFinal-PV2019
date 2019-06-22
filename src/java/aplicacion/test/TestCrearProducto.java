@@ -40,7 +40,12 @@ public class TestCrearProducto {
         producto.setDeposito("vida");
         producto.setEstado(true);
         producto.setImagenProducto("sin imagen ");
+<<<<<<< Updated upstream
         ida.crearProducto(producto);
    }
+=======
+        ida.agregarProducto(producto);
+    }
+>>>>>>> Stashed changes
     
 }

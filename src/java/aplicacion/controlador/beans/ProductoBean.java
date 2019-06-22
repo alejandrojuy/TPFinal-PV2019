@@ -10,45 +10,59 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import aplicacion.dao.IProductoDAO;
 import aplicacion.dao.imp.ProductoDAOImp;
+import aplicacion.modelo.dominio.Categoria;
 import aplicacion.modelo.dominio.Producto;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
+
+
 /**
  *
  * @author jaimito
  */
 @ManagedBean
 @ViewScoped
-public class ProductoBean implements Serializable{
+public class ProductoBean implements Serializable {
+
     private IProductoDAO iproductoDao;
- 
+
     //inicializando constuctor
     public ProductoBean() {
         iproductoDao = new ProductoDAOImp();
     }
 
-    public void crearProducto(Producto producto)
-    {
-        iproductoDao.crearProducto(producto);
+    //Metodos
+    public void agregarProducto(Producto producto) {
+        iproductoDao.agregarProducto(producto);
+    }
+
+    public void eliminarProducto(Producto producto) {
+        iproductoDao.eliminarProducto(producto);
+    }
+
+    public void modificarProducto(Producto producto) {
+        iproductoDao.modificarProducto(producto);
+    }
+    //Obtener Productos
+
+    public List<Producto> obtenerProductos() {
+        return iproductoDao.mostrarListaDeProductos();
+    }
+
+    //Obtener Categorias
+    public List<Categoria> obtenerCategorias() {
+        return iproductoDao.mostrarListaDeCategorias();
     }
     
-    //defieniendo metodos accesores get y set del IProductoDAO
+    //Getters & Setters
+
     public IProductoDAO getIproductoDao() {
         return iproductoDao;
-
     }
 
     public void setIproductoDao(IProductoDAO iproductoDao) {
         this.iproductoDao = iproductoDao;
     }
     
-   // public class ImagesView {
-     
     
-     
- 
-    
-//}
-    
+
 }

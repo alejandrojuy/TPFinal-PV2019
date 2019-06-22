@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/principalTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:fieldset legend="Basic" style="margin-bottom:20px">
+                <p:repeat value="#{productoFormBean.listaDeProductosCocina}" var="coc">
+                    <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                        <p:graphicImage name="images/cocina/#{coc.imagenProducto}.jpg" /> 
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Marca:" />
+                                <h:outputText value="#{coc.marca}" style="font-weight: bold"/>
+
+                                <h:outputText value="Nombre:" />
+                                <h:outputText value="#{coc.nombre}" style="font-weight: bold"/>
+
+                                <h:outputText value="Precio:" />
+                                <h:outputText value="#{coc.precio}" style="font-weight: bold"/>
+
+                                <p:outputLabel for="lblcantidad" value="Cantidad:" />
+                                <p:inputNumber id="lblcantidad" value="#{ventaFormBean.cantidad}" required="true" requiredMessage="Debe indicar cantidad"/>
+                                <p:commandButton value="Agregar al Carrito" actionListener="#{ventaFormBean.crearVentaProducto(coc)}"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                    <hr />
+                </p:repeat>
+            </p:fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

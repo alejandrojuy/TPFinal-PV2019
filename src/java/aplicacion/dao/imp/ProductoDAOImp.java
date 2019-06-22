@@ -7,12 +7,13 @@ package aplicacion.dao.imp;
 
 import aplicacion.dao.IProductoDAO;
 import aplicacion.hibernate.configuracion.HibernateUtil;
+import aplicacion.modelo.dominio.Categoria;
 import aplicacion.modelo.dominio.Producto;
-import aplicacion.modelo.dominio.Usuario;
+
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 /**
@@ -20,49 +21,69 @@ import org.hibernate.Session;
  * @author jaimito
  */
 public class ProductoDAOImp implements Serializable, IProductoDAO{
-        private List<Usuario> lista;
-         
-
+      
+        
     public ProductoDAOImp() {
-        lista= new ArrayList();
+      
     
     }
         
+    //Metodos implementados
+    
     @Override
-    public void crearProducto(Producto producto) {
-       Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(producto);
-        session.getTransaction().commit();
-        session.close();
-        
+    public void agregarProducto(Producto producto) {
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.save(producto);
+        sesion.getTransaction().commit();
+        sesion.close();
     }
-
+    
     @Override
     public void eliminarProducto(Producto producto) {
-        System.out.println("se elimino el productoDao");
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.delete(producto);
+        sesion.getTransaction().commit();
+        sesion.close();
     }
 
     @Override
     public void modificarProducto(Producto producto) {
-        System.out.println("se modifico el productoDao");
-    }
-
-   
-
-    public List<Usuario> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Usuario> lista) {
-        this.lista = lista;
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.update(producto);
+        sesion.getTransaction().commit();
+        sesion.close();
     }
 
     @Override
-    public List<Producto> mostrarLista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Producto> mostrarListaDeProductos() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Producto.class);
+        List<Producto> productos = criteria.list();
+        session.close();
+        return productos;
+    }
+    
+    @Override
+    public List<Categoria> mostrarListaDeCategorias() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Categoria.class);
+        List<Categoria> categorias = criteria.list();
+        session.close();
+        return categorias;
     }
 
+    
+    @Override
+    public void agregarCategoria(Categoria categoria) {
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        sesion.beginTransaction();
+        sesion.save(categoria);
+        sesion.getTransaction().commit();
+        sesion.close();
+    }
     
     
 }
