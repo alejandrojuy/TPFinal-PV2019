@@ -13,7 +13,7 @@ import java.util.List;
  * @author jaimito
  */
 public interface ICategoriaDao {
-    public void crear(Categoria categoria);
+    public void crearCategoria(Categoria categoria);
     public List<Categoria>obtenerCategorias();
     
 }

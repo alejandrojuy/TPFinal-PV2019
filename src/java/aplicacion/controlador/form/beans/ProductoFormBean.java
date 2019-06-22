@@ -1,6 +1,8 @@
 package aplicacion.controlador.form.beans;
 
 import aplicacion.controlador.beans.ProductoBean;
+import aplicacion.dao.ICategoriaDao;
+import aplicacion.dao.imp.CategoriaDAOimpl;
 import aplicacion.modelo.dominio.Categoria;
 import aplicacion.modelo.dominio.Producto;
 import java.io.Serializable;
@@ -25,39 +27,20 @@ public class ProductoFormBean implements Serializable {
     @ManagedProperty(value = "#{productoBean}")
     private ProductoBean productoBean;
     private Producto producto;
-<<<<<<< Updated upstream
-   private ICategoriaDao idaCategoriaDao= new CategoriaDAOimpl();
-private List<Categoria> lista;
-private List<Producto> listaProducto;
-    
-    //construcctor
-    public ProductoFormBean() {
-        producto = new Producto();
-        lista= new ArrayList();
-        listaProducto= new ArrayList();
-        Categoria cate = new Categoria(123, "muebles de livin","Interior");
-        lista.add(cate);
-        cate = new Categoria(456,"roperos de lujos", "amoblamiento");
-        lista.add(cate);
-        cate = new Categoria(678, "herramientas para el hogar", "Jardin");
-        lista.add(cate);
-        Producto o= new Producto(123, "Mesa", "muebleria1");
-        listaProducto.add(o);
-        Producto p = new Producto(24, "ropero","muebleria2");
-        listaProducto.add(p);
-        Producto r = new Producto(76,"sillon","muebleria3");
-        listaProducto.add(r);
-=======
-    private int cantidad;
-    private List<Categoria> listaDeCategorias;
-    private List<Producto> listaDeProductos;
-    private List<Producto> listaDeProductosCocina;
-    private List<Producto> listaDeProductosComedor;
-    private List<Producto> listaDeProductosColchones;
-    private List<Producto> listaDeProductosDormitorio;
-    private List<Producto> listaDeProductosLavadero;
 
-    //constructor
+        private ICategoriaDao idaCategoriaDao= new CategoriaDAOimpl();
+        private List<Categoria> lista;
+        private List<Producto> listaProducto;
+        private int cantidad;
+        private List<Categoria> listaDeCategorias;
+        private List<Producto> listaDeProductos;
+        private List<Producto> listaDeProductosCocina;
+        private List<Producto> listaDeProductosComedor;
+        private List<Producto> listaDeProductosColchones;
+        private List<Producto> listaDeProductosDormitorio;
+        private List<Producto> listaDeProductosLavadero;
+    
+        //construcctor
     public ProductoFormBean() {
         producto = new Producto();
         listaDeCategorias = new ArrayList();
@@ -67,10 +50,8 @@ private List<Producto> listaProducto;
         listaDeProductosColchones = new ArrayList();
         listaDeProductosDormitorio = new ArrayList();
         listaDeProductosLavadero = new ArrayList();
-
->>>>>>> Stashed changes
+        lista= new ArrayList();
     }
-
     //Metodos
     @PostConstruct
     public void init() {
@@ -79,7 +60,6 @@ private List<Producto> listaProducto;
         cargarProductosSegunCategoria();
         //cargarProveedores();
     }
-
     /**
      * Metodo que permite editar un producto de la tabla productos
      *
@@ -91,14 +71,10 @@ private List<Producto> listaProducto;
         FacesMessage msg = new FacesMessage("Exito", "Usuario modificado correctamente");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-<<<<<<< Updated upstream
-    
-     
-    
     public List<Categoria>getListaCategoria(){
         List<Categoria> lista= idaCategoriaDao.obtenerCategorias();
         return  lista;
-=======
+    }
 
     /**
      * Metodo que permite cancelar la edicion de un producto de la tabla
@@ -109,7 +85,7 @@ private List<Producto> listaProducto;
     public void onRowEditCancel(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Edicion Cancelada", "No se han modificado los cambios");
         FacesContext.getCurrentInstance().addMessage(null, msg);
->>>>>>> Stashed changes
+
     }
 
     /**
@@ -194,6 +170,10 @@ private List<Producto> listaProducto;
 
     public void setProductoBean(ProductoBean productoBean) {
         this.productoBean = productoBean;
+    } 
+
+    public List<Categoria> getListaDeCategorias() {
+        return listaDeCategorias;
     }
 
     public Producto getProducto() {
@@ -203,26 +183,7 @@ private List<Producto> listaProducto;
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-<<<<<<< Updated upstream
-    public void cargarProducto()
-    {  // productoBean.crearProducto(producto);
-        listaProducto.add(producto);
-=======
 
-    public int getCantidad() {
-        return cantidad;
->>>>>>> Stashed changes
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public List<Categoria> getListaDeCategorias() {
-        return listaDeCategorias;
-    }
-
-<<<<<<< Updated upstream
     public ICategoriaDao getIdaCategoriaDao() {
         return idaCategoriaDao;
     }
@@ -230,9 +191,31 @@ private List<Producto> listaProducto;
     public void setIdaCategoriaDao(ICategoriaDao idaCategoriaDao) {
         this.idaCategoriaDao = idaCategoriaDao;
     }
-   
-    
-=======
+
+    public List<Categoria> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Categoria> lista) {
+        this.lista = lista;
+    }
+
+    public List<Producto> getListaProducto() {
+        return listaProducto;
+    }
+
+    public void setListaProducto(List<Producto> listaProducto) {
+        this.listaProducto = listaProducto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public void setListaDeCategorias(List<Categoria> listaDeCategorias) {
         this.listaDeCategorias = listaDeCategorias;
     }
@@ -284,6 +267,4 @@ private List<Producto> listaProducto;
     public void setListaDeProductosLavadero(List<Producto> listaDeProductosLavadero) {
         this.listaDeProductosLavadero = listaDeProductosLavadero;
     }
-
->>>>>>> Stashed changes
 }

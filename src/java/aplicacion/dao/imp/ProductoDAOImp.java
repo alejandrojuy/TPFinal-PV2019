@@ -4,13 +4,9 @@
  * and open the template in the editor.
  */
 package aplicacion.dao.imp;
-
 import aplicacion.dao.IProductoDAO;
 import aplicacion.hibernate.configuracion.HibernateUtil;
-import aplicacion.modelo.dominio.Categoria;
 import aplicacion.modelo.dominio.Producto;
-
-
 import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -21,10 +17,8 @@ import org.hibernate.Session;
  * @author jaimito
  */
 public class ProductoDAOImp implements Serializable, IProductoDAO{
-      
-        
+    
     public ProductoDAOImp() {
-      
     
     }
         
@@ -66,24 +60,8 @@ public class ProductoDAOImp implements Serializable, IProductoDAO{
         return productos;
     }
     
-    @Override
-    public List<Categoria> mostrarListaDeCategorias() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(Categoria.class);
-        List<Categoria> categorias = criteria.list();
-        session.close();
-        return categorias;
-    }
+  
+  
 
-    
-    @Override
-    public void agregarCategoria(Categoria categoria) {
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        sesion.beginTransaction();
-        sesion.save(categoria);
-        sesion.getTransaction().commit();
-        sesion.close();
-    }
-    
     
 }

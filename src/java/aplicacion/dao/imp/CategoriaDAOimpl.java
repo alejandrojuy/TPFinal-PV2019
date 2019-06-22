@@ -20,8 +20,12 @@ import org.hibernate.Session;
  */
 public class CategoriaDAOimpl implements Serializable, ICategoriaDao{
 
+    public CategoriaDAOimpl() {
+    }
+
+
     @Override
-    public void crear(Categoria categoria) {
+    public void crearCategoria(Categoria categoria) {
   Session session = HibernateUtil.getSessionFactory().openSession();
    session.beginTransaction();
    session.save(categoria);

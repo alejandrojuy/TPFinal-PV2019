@@ -26,39 +26,39 @@ public class TestCategoria {
         categoria.setCodigoCate(1);
         categoria.setDescripcion("cama, mesa de luz, ropero ");
         categoria.setNombreCate("Muebles");
-        iCategoriaDao.crear(categoria);
+        iCategoriaDao.crearCategoria(categoria);
         
         Categoria cate = new Categoria();
         cate.setCodigoCate(2);
         cate.setDescripcion("cocina, mesa, sillas");
         cate.setNombreCate("Living Comedor y Deco");
-        iCategoriaDao.crear(cate );
+        iCategoriaDao.crearCategoria(cate);
         
         Categoria cat = new Categoria(); 
         cat.setCodigoCate(3);
         cat.setDescripcion("sillones, mesa ratonera ");
         cat.setNombreCate("Jardin y Exteriores");
-        iCategoriaDao.crear(cat);
+        iCategoriaDao.crearCategoria(cat);
 
         Categoria ca = new Categoria();
         ca.setCodigoCate(4);
         ca.setDescripcion("colchones, somiers");
         ca.setNombreCate("Colchoes y Somiers");
-        iCategoriaDao.crear(ca);
+        iCategoriaDao.crearCategoria(ca);
         
         Categoria c= new Categoria();
         
         c.setCodigoCate(5);
         c.setDescripcion("Almohadas");
         c.setNombreCate("Almohadas");
-        iCategoriaDao.crear(c);
+        iCategoriaDao.crearCategoria(c);
         
         Categoria categori = new Categoria();
         
         categori.setCodigoCate(6);
         categori.setDescripcion("va queriendo");
         categori.setNombreCate("Ropa de Cama");
-        iCategoriaDao.crear(categori);
+        iCategoriaDao.crearCategoria(categori);
 //        List<Categoria> lista = iCategoriaDao.obtenerCategorias();
 //         for(Categoria o: lista)
 //         {

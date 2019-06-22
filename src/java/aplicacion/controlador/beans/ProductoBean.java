@@ -5,10 +5,12 @@
  */
 package aplicacion.controlador.beans;
 
+import aplicacion.dao.ICategoriaDao;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import aplicacion.dao.IProductoDAO;
+import aplicacion.dao.imp.CategoriaDAOimpl;
 import aplicacion.dao.imp.ProductoDAOImp;
 import aplicacion.modelo.dominio.Categoria;
 import aplicacion.modelo.dominio.Producto;
@@ -24,10 +26,11 @@ import java.util.List;
 public class ProductoBean implements Serializable {
 
     private IProductoDAO iproductoDao;
-
+    private ICategoriaDao iCategoriaDao;
     //inicializando constuctor
     public ProductoBean() {
         iproductoDao = new ProductoDAOImp();
+        iCategoriaDao = new CategoriaDAOimpl();
     }
 
     //Metodos
@@ -50,7 +53,7 @@ public class ProductoBean implements Serializable {
 
     //Obtener Categorias
     public List<Categoria> obtenerCategorias() {
-        return iproductoDao.mostrarListaDeCategorias();
+        return iCategoriaDao.obtenerCategorias();
     }
     
     //Getters & Setters
@@ -61,6 +64,14 @@ public class ProductoBean implements Serializable {
 
     public void setIproductoDao(IProductoDAO iproductoDao) {
         this.iproductoDao = iproductoDao;
+    }
+
+    public ICategoriaDao getiCategoriaDao() {
+        return iCategoriaDao;
+    }
+
+    public void setiCategoriaDao(ICategoriaDao iCategoriaDao) {
+        this.iCategoriaDao = iCategoriaDao;
     }
     
     
