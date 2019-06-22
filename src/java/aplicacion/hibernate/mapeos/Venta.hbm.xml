@@ -3,7 +3,7 @@
 
 <hibernate-mapping>
     <class name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" 
-           catalog="prueba" table="ventas">
+           catalog="muebleria" table="ventas">
         <id name="codigoVenta" type="integer">
             <column name="ven_codigo_venta" length="12"/>
             <generator class="identity"/>

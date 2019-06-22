@@ -39,12 +39,14 @@ public class Producto implements Serializable{
         this.estado = estado;
         this.imagenProducto = imagenProducto;
     }
-    
-    public Producto(int codigo,double precio, String nombre) {
+
+    public Producto(int codigo, String nombre, String imagenProducto) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.precio = precio;
+        this.imagenProducto = imagenProducto;
     }
+    
+    
     
    // gets y sets 
 

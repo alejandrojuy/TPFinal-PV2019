@@ -8,9 +8,9 @@
 
   
    <class  name="aplicacion.modelo.dominio.Categoria" optimistic-lock="version" 
-            table="categorias" catalog="prueba">
+            table="categorias" catalog="muebleria">
         <id name="codigoCate" type="int">
-          <column name="cate_codigo" length="10" not-null="true"/>
+          <column name="cate_codigo" length="15" not-null="true"/>
           <generator class="assigned"/>
         </id>
    
@@ -18,7 +18,7 @@
             <column name="cate_descripcion" length="50" not-null="true" />
         </property>
         <property name="nombreCate" type="string">
-            <column name="cate_nombre" length="15" not-null="true" />
+            <column name="cate_nombre" length="30" not-null="true" />
         </property>
        
    

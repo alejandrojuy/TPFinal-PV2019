@@ -7,6 +7,7 @@ package aplicacion.test;
 
 import aplicacion.dao.IUsuarioDAO;
 import aplicacion.dao.imp.UsuarioDAOImp;
+import aplicacion.modelo.dominio.Categoria;
 import aplicacion.modelo.dominio.Usuario;
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class TestCrearUsuario {
     public static void main(String[] args) {
         IUsuarioDAO ida= new UsuarioDAOImp();
         Usuario usuario = new Usuario();
+        
         usuario.setUsuario("loll");
         usuario.setPassword("333");
         usuario.setDni(321);
@@ -31,6 +33,7 @@ public class TestCrearUsuario {
         usuario.setDireccion("comedero");
         usuario.setProvincia("Jujuy22");
         usuario.setCodigoPostal(4600);
+        
         
         usuario.setFechaNacimiento(new Date());
         usuario.setTelefono(43722);

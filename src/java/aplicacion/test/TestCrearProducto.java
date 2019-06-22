@@ -30,7 +30,6 @@ public class TestCrearProducto {
         categoria.setDescripcion("992");
         categoria.setNombreCate("9921");
         iCategoriaDao.crear(categoria);//sin antes crear esta categoria me daba error taloco jaja
-        
         producto.setCategoria(categoria); // y esta tambien va si o si ... prueben al menos a mi me daba error
         producto.setCodigo(1267);
         producto.setPrecio(1234);
@@ -42,6 +41,6 @@ public class TestCrearProducto {
         producto.setEstado(true);
         producto.setImagenProducto("sin imagen ");
         ida.crearProducto(producto);
-    }
+   }
     
 }

@@ -10,28 +10,83 @@
         <div class="ui-g">
              <div class="ui-g-12 ui-md-3" style=" "> 
               
-               <h:form>
-                 <h3>Aprovecha las Ofertas </h3>
-                <p:clock pattern="HH:mm:ss"   />
-             </h:form>
+             
+
+            <style type="text/css">
+            .ui-clock {
+            width: 80%;
+            }
+            </style>
+                <h:form>
+                        <p:clock pattern="HH:mm:ss" />
+                    <h3>Aprovecha las Ofertas </h3>
+                     <p:clock pattern="HH:mm:ss"   />
+                </h:form>
+                  
              </div>
-            <div class="ui-grid-responsive" style="background-color: blue">
+                <div class="ui-grid-responsive" style="background-color: blue">
                 
-                <p:galleria  value="#{galeriaBean.images}" var="image" panelWidth="600" panelHeight="400" style=" "  showCaption="true" autoPlay="true">
-                    <p:graphicImage cache="false" name="images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
-                <p:panelGrid columns="1" styleClass="wf" style="text-align: center;">
+                     <p:galleria  value="#{galeriaBean.images}" var="image" panelWidth="600" panelHeight="400" style=" "  showCaption="true" autoPlay="true">
+                         <p:graphicImage cache="false" name="images/#{image}.jpg" alt="Image Description for #{image}" title="#{image}"/>
+                         <p:panelGrid columns="1" styleClass="wf" style="text-align: center;">
                  
-                </p:panelGrid>
-                </p:galleria>
+                          </p:panelGrid>
+                        </p:galleria>
                
                 </div>
                 <div class="ui-g-12 ui-md-2 ui-g-nopad" style=" ">
                 </div>
-       </div>
-     
- 
+        </div>
         <p:dialog   header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
             <h:outputText value="This is a Modal Dialog." />
         </p:dialog>
+       
+        <p:carousel value="#{productoFormBean.lista}" headerText="Responsive" var="cate" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+            <f:facet name="header">
+                <p:graphicImage name="resources/images/muebleria1.jpg "/> 
+            </f:facet>
+            
+ 
+            <h:outputText value="Id:" />
+            <h:outputText value="#{cate.codigoCate}" />
+ 
+            <h:outputText value="Year" />
+            <h:outputText value="#{cate.descripcion}" />
+ 
+            <h:outputText value="Color:" />
+            <h:outputText value="#{cate.nombreCate} "/>
+  
+ 
+            <f:facet name="footer">
+                <p:commandButton value="Comprar "></p:commandButton>
+            </f:facet>
+            </p:panelGrid>
+         </p:carousel>
+        <p:carousel value="#{productoFormBean.lista}" headerText="Responsive" var="cate" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+            <f:facet name="header">
+                <p:graphicImage name="resources/images/muebleria1.jpg "/> 
+            </f:facet>
+            
+ 
+            <h:outputText value="Id:" />
+            <h:outputText value="#{cate.codigoCate}" />
+ 
+            <h:outputText value="Year" />
+            <h:outputText value="#{cate.descripcion}" />
+ 
+            <h:outputText value="Color:" />
+            <h:outputText value="#{cate.nombreCate} "/>
+  
+ 
+            <f:facet name="footer">
+                <p:commandButton value="Comprar " icon="pi pi-search"></p:commandButton>
+            </f:facet>
+             
+            </p:panelGrid>
+         </p:carousel>
+  
+   
     </ui:define>
 </ui:composition>

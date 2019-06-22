@@ -27,6 +27,7 @@ public class ProductoFormBean implements Serializable{
     @ManagedProperty(value="#{productoBean}")
     private ProductoBean productoBean;
     private Producto producto;
+   private ICategoriaDao idaCategoriaDao= new CategoriaDAOimpl();
 private List<Categoria> lista;
 private List<Producto> listaProducto;
     
@@ -41,6 +42,12 @@ private List<Producto> listaProducto;
         lista.add(cate);
         cate = new Categoria(678, "herramientas para el hogar", "Jardin");
         lista.add(cate);
+        Producto o= new Producto(123, "Mesa", "muebleria1");
+        listaProducto.add(o);
+        Producto p = new Producto(24, "ropero","muebleria2");
+        listaProducto.add(p);
+        Producto r = new Producto(76,"sillon","muebleria3");
+        listaProducto.add(r);
     }
 
     public List<Categoria> getLista() {
@@ -53,20 +60,9 @@ private List<Producto> listaProducto;
     
      
     
-    public void d(){
-              //lista.add(producto);
-              ICategoriaDao ida= new CategoriaDAOimpl();
-                      
-              Categoria cate= new Categoria();
-              cate.setCodigoCate(1234);
-              cate.setDescripcion("dasdsa");
-              cate.setNombreCate("palala");
-              ida.crear(cate);
-              //Producto rod = new Producto(111999, 22112,"tiramisu");
-              //lista.add(rod);
-              producto.setCategoria(cate);
-              producto.setEstado(true);
-        productoBean.crearProducto(producto);
+    public List<Categoria>getListaCategoria(){
+        List<Categoria> lista= idaCategoriaDao.obtenerCategorias();
+        return  lista;
     }
     
 
@@ -89,7 +85,7 @@ private List<Producto> listaProducto;
         this.producto = producto;
     }
     public void cargarProducto()
-    {
+    {  // productoBean.crearProducto(producto);
         listaProducto.add(producto);
     }
 
@@ -99,6 +95,14 @@ private List<Producto> listaProducto;
 
     public void setListaProducto(List<Producto> listaProducto) {
         this.listaProducto = listaProducto;
+    }
+
+    public ICategoriaDao getIdaCategoriaDao() {
+        return idaCategoriaDao;
+    }
+
+    public void setIdaCategoriaDao(ICategoriaDao idaCategoriaDao) {
+        this.idaCategoriaDao = idaCategoriaDao;
     }
    
     

@@ -39,10 +39,14 @@ public class LoginFormBean {
      */
     public String verificarCredenciales() {
         String resultado = "";
+       
         Usuario usuario = usuarioBean.verificarCredenciales(this.usuario, this.password);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
         if (usuario != null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
                 resultado = "home?faces-redirect=true";
+            
+          
         } else {
             FacesContext fc = FacesContext.getCurrentInstance();
             fc.addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso Denegado", "Las credenciales son incorrectas"));

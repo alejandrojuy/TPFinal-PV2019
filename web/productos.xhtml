@@ -45,7 +45,7 @@
                             <p:selectOneMenu  id="sltOne" value="#{productoFormBean.producto.categoria}" converter="omnifaces.SelectItemsConverter" label="Categoria"  required="true">
                                 <f:selectItem  itemLabel="Categoria" ></f:selectItem>
                               <!-- <! select items  lo que muestra>--> <!-- <! selectOneMuenu value="donde lo guarda ">--><!--  atributo itemvalue lo que guarda   lo que muestra>-->
-                              <f:selectItems value="#{productoFormBean.lista}" var="cate" itemLabel="#{cate.nombreCate}" itemValue="#{cate}"/>
+                              <f:selectItems value="#{productoFormBean.listaCategoria}" var="cate" itemLabel="#{cate.nombreCate}" itemValue="#{cate}"/>
                             </p:selectOneMenu>
    
                             <p:outputLabel for="txtDeposito" value="Deposito" />
@@ -95,11 +95,14 @@
                 </h:form>            
                 <h:form id="frmTblProductos">
                     <p:dataTable id="tblProductos" emptyMessage="vacio"  value="#{productoFormBean.listaProducto}" var="lib">
+                           <f:facet name="header">
+                               Listado de Productos
+                            </f:facet>
                             <p:column headerText="Codigo" >
                                     <p:outputLabel value="#{lib.codigo}"/> 
                             </p:column>
                             <p:column headerText="Precio"  >
-                            <p:outputLabel value="#{lib.precio}" >
+                                <p:outputLabel value="#{lib.imagenProducto}" >
                                     <f:convertNumber type="currency" currencySymbol="$"/>
                                     </p:outputLabel>
                             </p:column>
@@ -118,11 +121,11 @@
                             <p:column headerText="Categoria-descripcion"  >
                                  <p:outputLabel value="#{lib.categoria.descripcion}"/>
                             </p:column>
-                            <p:column headerText="Fecha de Presenteacion"  >
-                                    <p:outputLabel value="">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </p:outputLabel>
-                            </p:column> 
+                            <p:column headerText="Imagen del producto"  >
+                                
+                                <p:graphicImage cache="false" name="images/#{lib.imagenProducto}.jpg" width="100" height="100" alt="Image Description for #{lib.imagenProducto}" title="#{lib.imagenProducto}"/>
+                            </p:column>
+                            
                             <p:column>
                                     <p:commandButton value="Eliminar"   update="  mensajes" />
                             </p:column>
@@ -130,7 +133,8 @@
                
                      </p:dataTable>
                     </h:form>
-              </p:panel>
+                </p:panel>
+                     
              </div>
                 <div class="ui-g-2"></div>
                 

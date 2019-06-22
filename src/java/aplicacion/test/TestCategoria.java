@@ -8,6 +8,7 @@ package aplicacion.test;
 import aplicacion.dao.ICategoriaDao;
 import aplicacion.dao.imp.CategoriaDAOimpl;
 import aplicacion.modelo.dominio.Categoria;
+import java.util.List;
 
 /**
  *
@@ -22,10 +23,52 @@ public class TestCategoria {
         ICategoriaDao iCategoriaDao = new CategoriaDAOimpl();
         Categoria categoria = new Categoria();
         
-        categoria.setCodigoCate(22312);
-        categoria.setDescripcion("va queriendo");
-        categoria.setNombreCate("lol");
+        categoria.setCodigoCate(1);
+        categoria.setDescripcion("cama, mesa de luz, ropero ");
+        categoria.setNombreCate("Muebles");
         iCategoriaDao.crear(categoria);
+        
+        Categoria cate = new Categoria();
+        cate.setCodigoCate(2);
+        cate.setDescripcion("cocina, mesa, sillas");
+        cate.setNombreCate("Living Comedor y Deco");
+        iCategoriaDao.crear(cate );
+        
+        Categoria cat = new Categoria(); 
+        cat.setCodigoCate(3);
+        cat.setDescripcion("sillones, mesa ratonera ");
+        cat.setNombreCate("Jardin y Exteriores");
+        iCategoriaDao.crear(cat);
+
+        Categoria ca = new Categoria();
+        ca.setCodigoCate(4);
+        ca.setDescripcion("colchones, somiers");
+        ca.setNombreCate("Colchoes y Somiers");
+        iCategoriaDao.crear(ca);
+        
+        Categoria c= new Categoria();
+        
+        c.setCodigoCate(5);
+        c.setDescripcion("Almohadas");
+        c.setNombreCate("Almohadas");
+        iCategoriaDao.crear(c);
+        
+        Categoria categori = new Categoria();
+        
+        categori.setCodigoCate(6);
+        categori.setDescripcion("va queriendo");
+        categori.setNombreCate("Ropa de Cama");
+        iCategoriaDao.crear(categori);
+//        List<Categoria> lista = iCategoriaDao.obtenerCategorias();
+//         for(Categoria o: lista)
+//         {
+//             System.out.print(o.getNombreCate());
+//             System.out.print(" ");
+//             System.out.println(o.getCodigoCate());
+//             System.out.print(" ");
+//             System.out.println(o.getDescripcion());
+//         }
+//         
     }
     
 }

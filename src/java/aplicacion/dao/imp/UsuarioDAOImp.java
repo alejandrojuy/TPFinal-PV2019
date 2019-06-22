@@ -7,13 +7,16 @@ package aplicacion.dao.imp;
 
 import aplicacion.dao.IUsuarioDAO;
 import aplicacion.hibernate.configuracion.HibernateUtil;
+ 
 import aplicacion.modelo.dominio.Usuario;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.context.FacesContext;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -45,20 +48,33 @@ public class UsuarioDAOImp implements Serializable, IUsuarioDAO {
     
     @Override
     public List<Usuario> obtenerUsuarios() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria= session.createCriteria(Usuario.class);
+        List<Usuario> usuarios= criteria.list();
+        session.close();
+        return usuarios;
         
-        return lista;
     }
 
     @Override
     public Usuario verificarCredenciales(String usuario, String password) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria= session.createCriteria(Usuario.class);
+        //aca es donde filtramos por cada campo (en like se declara el nombre del atributo de la clase usuario q seria usuario q es nuestro id)
+        // y alado va la variable que comparamos nosotros (la q recibimos q es usuario)
+        criteria.add(Restrictions.like("usuario", usuario));
+       //aca es donde filtramos de nuevo por cada campo (en like se declara el nombre del atributo de la clase usuario q seria password q es nuestro password de nuestro usuario q se intenta logear)
+        // y alado va la variable que comparamos nosotros (la q recibimos q es password)
+        criteria.add(Restrictions.like("password", password));// aca volvevmos a filtrar los objetos q pasaron el primer filtro con like q era el filtro por usuario
         Usuario usuarioEncontrado = null;
-        for (Usuario usu : lista) {
-            if (usu.getUsuario().equals(usuario) && usu.getPassword().equals(password)) {
-                usuarioEncontrado = usu;
+        //mirar que en la condicion del if va un ! que significa distinto de vacio 
+            if(!criteria.list().isEmpty())
+            {//aca abajo casteamos a tipo usuario lo q sobra de la lista que contiene criteria en la posicion 0
+               usuarioEncontrado = (Usuario) criteria.list().get(0);
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", usuarioEncontrado);
             }
-        }
+        session.close();
         return usuarioEncontrado;
     }
 

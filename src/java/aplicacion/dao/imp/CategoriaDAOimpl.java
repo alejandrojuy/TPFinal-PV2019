@@ -9,6 +9,8 @@ import aplicacion.dao.ICategoriaDao;
 import aplicacion.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Categoria;
 import java.io.Serializable;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 
@@ -27,6 +29,16 @@ public class CategoriaDAOimpl implements Serializable, ICategoriaDao{
    session.close();
      
     
+    }
+
+    @Override
+    public List<Categoria> obtenerCategorias() {
+    
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria= session.createCriteria(Categoria.class);
+        List<Categoria> categorias= criteria.list();
+        session.close();
+        return categorias;
     }
  
   
