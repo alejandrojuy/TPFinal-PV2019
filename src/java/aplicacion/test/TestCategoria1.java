@@ -23,48 +23,38 @@ public class TestCategoria1 {
         //Ejecutar los test de acuerdo a los numeros
         
         
-        
-        
-        
-        ICategoriaDao iCategoriaDao = new CategoriaDAOimpl();
+       ICategoriaDao iCategoriaDao = new CategoriaDAOimpl();
         Categoria categoria = new Categoria();
-        
-        categoria.setCodigoCate(11);
-        categoria.setDescripcion("cama, mesa de luz, ropero ");
-        categoria.setNombreCate("Muebles");
+        categoria.setCodigoCate(1);
+        categoria.setDescripcion("Muebles para la cocina como: mesas, sillas..ect. ");
+        categoria.setNombreCate("Cocina");
         iCategoriaDao.crearCategoria(categoria);
         
         Categoria cate = new Categoria();
-        cate.setCodigoCate(222);
-        cate.setDescripcion("cocina, mesa, sillas");
-        cate.setNombreCate("Living Comedor y Deco");
+        cate.setCodigoCate(2);
+        cate.setDescripcion("Muebles para la habitacion como : colchones, sabanas, almohadas, etc.");
+        cate.setNombreCate("Colchones y Somier");
         iCategoriaDao.crearCategoria(cate);
         
         Categoria cat = new Categoria(); 
-        cat.setCodigoCate(333);
-        cat.setDescripcion("sillones, mesa ratonera ");
-        cat.setNombreCate("Jardin y Exteriores");
+        cat.setCodigoCate(3);
+        cat.setDescripcion("Muebles como mesa de luz ropero, organizador de zapatos, ect");
+        cat.setNombreCate("Dormitorio");
         iCategoriaDao.crearCategoria(cat);
 
         Categoria ca = new Categoria();
-        ca.setCodigoCate(444);
-        ca.setDescripcion("colchones, somiers");
-        ca.setNombreCate("Colchoes y Somiers");
+        ca.setCodigoCate(4);
+        ca.setDescripcion("muebles como: Botiquin, Alacena Esquinera de Baño,Set de Cajas Organizadoras Eco, etc");
+        ca.setNombreCate("Lavadero y Baño");
         iCategoriaDao.crearCategoria(ca);
         
         Categoria c= new Categoria();
-        
-        c.setCodigoCate(555);
-        c.setDescripcion("Almohadas");
-        c.setNombreCate("Almohadas");
+        c.setCodigoCate(5);
+        c.setDescripcion("Muebles como:Mesa de Acero, Vidrio, Moderna,Mesa para TV, Set de Sillas de Plástico,Sillónes de cuero, etc    ");
+        c.setNombreCate("Sala de Estar-Comedor");
         iCategoriaDao.crearCategoria(c);
         
-        Categoria categori = new Categoria();
-        
-        categori.setCodigoCate(666);
-        categori.setDescripcion("va queriendo");
-        categori.setNombreCate("Ropa de Cama");
-        iCategoriaDao.crearCategoria(categori);
+       
 //        List<Categoria> lista = iCategoriaDao.obtenerCategorias();
 //         for(Categoria o: lista)
 //         {

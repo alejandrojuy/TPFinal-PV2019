@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package aplicacion.test;
-
-import aplicacion.dao.IUsuarioDAO;
-import aplicacion.dao.imp.UsuarioDAOImp;
-import aplicacion.modelo.dominio.Usuario;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

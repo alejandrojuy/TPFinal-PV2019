@@ -8,12 +8,12 @@
  <class  name="aplicacion.modelo.dominio.Producto" optimistic-lock="version" 
             table="productos" catalog="muebleria">
         <id name="codigo" type="int">
-          <column name="prod_codigo" length="10" not-null="true"/>
+          <column name="prod_codigo" length="15" not-null="true"/>
           <generator class="assigned"/>
         </id>
         
    <property name="precio" type="double">
-            <column name="prod_precio" length="10" not-null="true" />
+            <column name="prod_precio" length="15" not-null="true" />
         </property>
       <many-to-one name="categoria" class="aplicacion.modelo.dominio.Categoria" fetch="join">
         <column name="pub_categoria_codigo" not-null="true"/>
@@ -24,16 +24,16 @@
             <column name="prod_stock" length="30" not-null="true" />
         </property>
         <property name="marca" type="string">
-            <column name="prod_marca" length="15" not-null="true" />
+            <column name="prod_marca" length="50" not-null="true" />
         </property>
         <property name="nombre" type="string">
-            <column name="prod_nombre" length="20" not-null="true" />
+            <column name="prod_nombre" length="150" not-null="true" />
         </property>
         <property name="descripcion" type="string">
-            <column name="prod_descripcion" length="50" not-null="true" />
+            <column name="prod_descripcion" length="250" not-null="true" />
         </property>
         <property name="deposito" type="string">
-            <column name="prod_deposito" length="15" not-null="true" />
+            <column name="prod_deposito" length="100" not-null="true" />
         </property>
         <property name="estado" type="boolean">
             <column name="prod_estado"  not-null="true" />

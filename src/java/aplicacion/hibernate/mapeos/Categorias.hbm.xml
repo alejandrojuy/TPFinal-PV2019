@@ -15,10 +15,10 @@
         </id>
    
         <property name="descripcion" type="string">
-            <column name="cate_descripcion" length="50" not-null="true" />
+            <column name="cate_descripcion" length="150" not-null="true" />
         </property>
         <property name="nombreCate" type="string">
-            <column name="cate_nombre" length="30" not-null="true" />
+            <column name="cate_nombre" length="40" not-null="true" />
         </property>
        
    
