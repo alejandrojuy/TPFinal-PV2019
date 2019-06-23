@@ -14,48 +14,54 @@ import java.util.List;
  *
  * @author jaimito
  */
-public class TestCategoria {
+public class TestCategoria1 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Ejecutar los test de acuerdo a los numeros
+        
+        
+        
+        
+        
         ICategoriaDao iCategoriaDao = new CategoriaDAOimpl();
         Categoria categoria = new Categoria();
         
-        categoria.setCodigoCate(1);
+        categoria.setCodigoCate(11);
         categoria.setDescripcion("cama, mesa de luz, ropero ");
         categoria.setNombreCate("Muebles");
         iCategoriaDao.crearCategoria(categoria);
         
         Categoria cate = new Categoria();
-        cate.setCodigoCate(2);
+        cate.setCodigoCate(222);
         cate.setDescripcion("cocina, mesa, sillas");
         cate.setNombreCate("Living Comedor y Deco");
         iCategoriaDao.crearCategoria(cate);
         
         Categoria cat = new Categoria(); 
-        cat.setCodigoCate(3);
+        cat.setCodigoCate(333);
         cat.setDescripcion("sillones, mesa ratonera ");
         cat.setNombreCate("Jardin y Exteriores");
         iCategoriaDao.crearCategoria(cat);
 
         Categoria ca = new Categoria();
-        ca.setCodigoCate(4);
+        ca.setCodigoCate(444);
         ca.setDescripcion("colchones, somiers");
         ca.setNombreCate("Colchoes y Somiers");
         iCategoriaDao.crearCategoria(ca);
         
         Categoria c= new Categoria();
         
-        c.setCodigoCate(5);
+        c.setCodigoCate(555);
         c.setDescripcion("Almohadas");
         c.setNombreCate("Almohadas");
         iCategoriaDao.crearCategoria(c);
         
         Categoria categori = new Categoria();
         
-        categori.setCodigoCate(6);
+        categori.setCodigoCate(666);
         categori.setDescripcion("va queriendo");
         categori.setNombreCate("Ropa de Cama");
         iCategoriaDao.crearCategoria(categori);

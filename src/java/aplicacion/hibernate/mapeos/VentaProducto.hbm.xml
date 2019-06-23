@@ -5,21 +5,21 @@
   <class name="aplicacion.modelo.dominio.VentaProducto" optimistic-lock="version" polymorphism="implicit" 
          catalog="muebleria" table="ventasProductos">
          <id name="codigo" type="integer">
-            <column name="ven_pro_codigo" length="5"/>
+            <column name="Venta_Producto_codigo" length="20" not-null="true"/>
             <generator class="identity"/>
         </id>
         
         <many-to-one name="producto" class="aplicacion.modelo.dominio.Producto"
-                     fetch="join           
+                     fetch="join" >          
             <column name="ven_pro_producto" not-null="true"/>
         </many-to-one>
         
         <property name="cantidad" type="integer">
-            <column name="ven_pro_cantidad" length="5" not-null="true"/>
+            <column name="ven_pro_cantidad" length="12" not-null="true"/>
         </property>
         
         <property name="importe" type="double">
-            <column name="ven_pro_importe" length="10" not-null="true"/>
+            <column name="ven_pro_importe" length="12" not-null="true"/>
         </property>
     
   </class>

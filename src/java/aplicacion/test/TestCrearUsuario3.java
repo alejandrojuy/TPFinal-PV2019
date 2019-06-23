@@ -15,12 +15,17 @@ import java.util.Date;
  *
  * @author jaimito
  */
-public class TestCrearUsuario {
+public class TestCrearUsuario3 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //Ejecutar los test de acuerdo a los numeros
+        
+        
+        
         IUsuarioDAO ida= new UsuarioDAOImp();
         Usuario usuario = new Usuario();
         

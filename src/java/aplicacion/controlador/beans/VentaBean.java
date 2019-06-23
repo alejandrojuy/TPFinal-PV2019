@@ -10,6 +10,7 @@ import aplicacion.dao.imp.VentaDAOImp;
 import aplicacion.modelo.dominio.Usuario;
 import aplicacion.modelo.dominio.Venta;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
@@ -44,7 +45,7 @@ public class VentaBean implements Serializable{
         iVentaDAO.modificarVenta(venta);
     }
     
-    public Set<Venta> obtenerVentas(Usuario usuario){
+    public List obtenerVentas(Usuario usuario){
         return iVentaDAO.obtenerVentas(usuario);
     }
     

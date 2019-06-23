@@ -14,6 +14,7 @@ import aplicacion.modelo.dominio.VentaProducto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -75,7 +76,7 @@ public class VentaFormBean implements Serializable {
             venta.setEstado(estadoVenta);
             venta.setUsuario(devolverUsuarioLogueado());
             venta.setTipoFactura(tipoDeFactura);
-            venta.setListaVentaProductos(listaDeVentasProductos);
+            venta.setListaVentaProductos( new HashSet<>(listaDeVentasProductos) );
             //venta.setMedioDePago(new Pago(1, "modoDePago1", "modoDePago1"));
         }
     }

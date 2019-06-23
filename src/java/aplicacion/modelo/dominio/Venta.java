@@ -3,7 +3,9 @@ package aplicacion.modelo.dominio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -20,14 +22,14 @@ public class Venta implements Serializable{
     private boolean entregado;
     private Usuario usuario;
     private String tipoFactura;
-    private List<VentaProducto> listaVentaProductos;
+    private Set<VentaProducto> listaVentaProductos;
     
     //constructor
     public Venta() {
-        listaVentaProductos= new ArrayList();
+        listaVentaProductos= new HashSet();
     }
 
-    public Venta(int codigoVenta, double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, List<VentaProducto> listaVentaProductos) {
+    public Venta(int codigoVenta, double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, Set<VentaProducto> listaVentaProductos) {
         this.codigoVenta = codigoVenta;
         this.descuentoTotal = descuentoTotal;
         this.subtotalVenta = subtotalVenta;
@@ -126,13 +128,15 @@ public class Venta implements Serializable{
         this.entregado = entregado;
     }
 
-    public List<VentaProducto> getListaVentaProductos() {
+    public Set<VentaProducto> getListaVentaProductos() {
         return listaVentaProductos;
     }
 
-    public void setListaVentaProductos(List<VentaProducto> listaVentaProductos) {
+    public void setListaVentaProductos(Set<VentaProducto> listaVentaProductos) {
         this.listaVentaProductos = listaVentaProductos;
     }
+
+  
 
     
 

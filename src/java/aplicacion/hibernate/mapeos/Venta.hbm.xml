@@ -3,26 +3,23 @@
 
 <hibernate-mapping>
     <class name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" 
-<<<<<<< Updated upstream
+
            catalog="muebleria" table="ventas">
         <id name="codigoVenta" type="integer">
-=======
-           catalog="prueba" table="ventas">
-        <id name="codigoVenta" type="int">
->>>>>>> Stashed changes
             <column name="ven_codigo_venta" length="12"/>
             <generator class="identity"/>
         </id>
+        
         <property name="descuentoTotal" type="double">
-            <column name="ven_descuento_total" length="5" not-null="true"/>
+            <column name="ven_descuento_total" length="10" not-null="true"/>
         </property>
         
-        <property name="subTotalVenta" type="double">
-            <column name="ven_sub_total" length="5" not-null="true"/>
+        <property name="subtotalVenta" type="double">
+            <column name="ven_sub_total" length="10" not-null="true"/>
         </property>
         
-        <property name="totalVenta" type="double">
-            <column name="ven_total_venta" length="5" not-null="true"/>
+        <property name="totalventa" type="double">
+            <column name="ven_total_venta" length="10" not-null="true"/>
         </property>
         
         <property name="fechaVenta" type="date">
@@ -33,27 +30,29 @@
             <column name="ven_hora" length="10" not-null="true"/>
         </property>
         
-        <property name="estado" type="boolean">
-            <column name="ven_estado" length="5" not-null="true"/>
+        <property name="estado" type="string">
+            <column name="ven_estado" length="20" not-null="true"/>
         </property>
         
-        <property name="entregado" type="string">
+        <property name="entregado" type="boolean">
             <column name="ven_estregado" length="20" not-null="true"/>
         </property>
         
         <many-to-one name="usuario" class="aplicacion.modelo.dominio.Usuario"
-                     fetch="join           
-            <column name="ven_usuario" not-null="true"/>
+                     fetch="join" >          
+            <column name="usu_nombre_usuario" not-null="true"/>
         </many-to-one>
         
         <property name="tipoFactura" type="string">
             <column name="ven_tipo_factura" length="20" not-null="true"/>
         </property>
         
-        <set name="listaVentaProductos" table="ventas_listaProductos" 
-             fetch="join" cascade="all">
-            <key column="ven_codigo_venta"/>
-            <many-to-many class="aplicacion.dominio.VentaProducto" column="venProd_codigo"/>
+        <set name="listaVentaProductos" table="ventas_Productos_Lista_Tea" 
+            fetch="join"  cascade="all">
+            <key column="ven_codigo_venta" not-null="true"/>
+            <many-to-many class="aplicacion.modelo.dominio.VentaProducto" column="ven_pro_codigo"/>
+            <!-- Aca le decimos que el otro elemento que le falta en la tea es VentaProducto-->
+            <!-- "   va adentro de many-->
         </set>
         
     </class>

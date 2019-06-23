@@ -2,6 +2,7 @@ package aplicacion.dao;
 
 import aplicacion.modelo.dominio.Usuario;
 import aplicacion.modelo.dominio.Venta;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 public interface IVentaDAO {
 
-    public Set<Venta> obtenerVentas(Usuario usuario);
+    public List<Venta> obtenerVentas(Usuario usuario);
 
     public void agregarVenta(Venta venta);
 

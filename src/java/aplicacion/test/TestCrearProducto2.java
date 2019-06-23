@@ -16,17 +16,22 @@ import aplicacion.modelo.dominio.Producto;
  *
  * @author jaimito
  */
-public class TestCrearProducto {
+public class TestCrearProducto2 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
+        
+        
+        //Ejecutar los test de acuerdo a los numeros
         IProductoDAO ida= new ProductoDAOImp();
         Categoria categoria = new Categoria();
      ICategoriaDao iCategoriaDao= new CategoriaDAOimpl();
         Producto producto= new Producto();
-        categoria.setCodigoCate(312);
+        categoria.setCodigoCate(1234);
         categoria.setDescripcion("992");
         categoria.setNombreCate("9921");
         iCategoriaDao.crearCategoria(categoria);//sin antes crear esta categoria me daba error taloco jaja
@@ -41,6 +46,9 @@ public class TestCrearProducto {
         producto.setEstado(true);
         producto.setImagenProducto("sin imagen ");
        ida.agregarProducto(producto);
+       
+       Producto otroProducto =new Producto(678, 699, categoria, 100, "Uniliver", "Perchero", "perchero que es para colgar ropa", "AV 291", true,"amaka");
+       ida.agregarProducto(otroProducto);
         
    }
     

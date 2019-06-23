@@ -6,6 +6,7 @@ import aplicacion.modelo.dominio.Venta;
 import java.io.Serializable;
 import java.util.Set;
 import aplicacion.hibernate.configuracion.HibernateUtil;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
@@ -17,10 +18,11 @@ public class VentaDAOImp implements Serializable, IVentaDAO {
 
     //Implementacion de metodos abstractos
     @Override
-    public Set<Venta> obtenerVentas(Usuario usuario) {
+    public List<Venta> obtenerVentas(Usuario usuario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Venta.class);
-        Set<Venta> ventas = (Set<Venta>) criteria.list();
+        List<Venta> ventas =criteria.list();
+// (Set<Venta>)  criteria.list(); parece q es forma de setear una lista 
         session.close();
         return ventas;
     }

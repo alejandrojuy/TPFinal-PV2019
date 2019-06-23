@@ -8,6 +8,10 @@ package aplicacion.test;
 import aplicacion.dao.IUsuarioDAO;
 import aplicacion.dao.imp.UsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -19,12 +23,15 @@ public class testUsda {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        IUsuarioDAO usu = new UsuarioDAOImp();
-        
+       Set set = new HashSet ();
+        set.add ("123");
+        set.add ("456");
 
-        Usuario u = usu.verificarCredenciales("alumno", "root");
-        System.out.println( u.getUsuario() );
-        System.out.println(u.getPassword());
+        List list = new ArrayList ();
+        list.addAll (set);
+        for (Object r: list){
+            System.out.println(r);
+        }
     }
     
 }
