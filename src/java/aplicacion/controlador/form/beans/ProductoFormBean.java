@@ -100,19 +100,19 @@ public class ProductoFormBean implements Serializable {
      */
     public void cargarProductosSegunCategoria() {
         for (int i = 0; i < listaDeProductos.size(); i++) {
-            if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("cocina")) {
+            if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("Cocina")) {
                 this.listaDeProductosCocina.add(listaDeProductos.get(i));
             } else {
-                if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("comedor")) {
+                if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("Sala de Estar-Comedor")) {
                     this.listaDeProductosComedor.add(listaDeProductos.get(i));
                 } else {
-                    if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("dormitorio")) {
+                    if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("Dormitorio")) {
                         this.listaDeProductosDormitorio.add(listaDeProductos.get(i));
                     } else {
-                        if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("colchones")) {
+                        if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("Colchones y Somier")) {
                             this.listaDeProductosColchones.add(listaDeProductos.get(i));
                         } else {
-                            if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("lavadero")) {
+                            if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("Lavadero y Baño")) {
                                 this.listaDeProductosLavadero.add(listaDeProductos.get(i));
                             }
                         }

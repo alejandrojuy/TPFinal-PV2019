@@ -29,8 +29,8 @@ public class Venta implements Serializable{
         listaVentaProductos= new HashSet();
     }
 
-    public Venta(int codigoVenta, double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, Set<VentaProducto> listaVentaProductos) {
-        this.codigoVenta = codigoVenta;
+    public Venta( double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, Set<VentaProducto> listaVentaProductos) {
+       // this.codigoVenta = codigoVenta;
         this.descuentoTotal = descuentoTotal;
         this.subtotalVenta = subtotalVenta;
         this.totalventa = totalventa;

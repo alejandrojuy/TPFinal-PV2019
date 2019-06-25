@@ -7,13 +7,15 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
+        <h:form id="frmCocina">
             <p:growl id="msgs" showDetail="true" />
 
             <p:fieldset legend="Basic" style="margin-bottom:20px">
                 <p:repeat value="#{productoFormBean.listaDeProductosCocina}" var="coc">
                     <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                        <p:graphicImage name="images/cocina/#{coc.imagenProducto}.jpg" /> 
+                         <f:facet name="header">
+                             <p:graphicImage name="images/Cocina/#{coc.imagenProducto}.jpg" height="200" width="200" /> 
+                        </f:facet>
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="Marca:" />
@@ -27,7 +29,7 @@
 
                                 <p:outputLabel for="lblcantidad" value="Cantidad:" />
                                 <p:inputNumber id="lblcantidad" value="#{ventaFormBean.cantidad}" required="true" requiredMessage="Debe indicar cantidad"/>
-                                <p:commandButton value="Agregar al Carrito" actionListener="#{ventaFormBean.crearVentaProducto(coc)}"/>
+                                <p:commandButton value="Agregar al Carrito" actionListener="#{ventaFormBean.crearVentaProducto(coc)}" update=":frmCocina:msgs"/>
                             </h:panelGrid>
                         </p:outputPanel>
                     </h:panelGrid>

@@ -7,55 +7,39 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
+        <h:form id="frmHome">
+            <p:messages id="mesagge"/>  
         <div class="ui-g">
-             <div class="ui-g-12 ui-md-3" style=" "> 
-              
-             
-
-            <style type="text/css">
-            .ui-clock {
-            width: 80%;
-            }
-            </style>
-                <h:form>
-                        <p:clock pattern="HH:mm:ss" />
-                    <h3>Aprovecha las Ofertas </h3>
-                     <p:clock pattern="HH:mm:ss"   />
-                </h:form>
-                  
-             </div>
+                 <div class="ui-g-12 ui-md-3" style=" "> 
+                 </div>
                 <div class="ui-grid-responsive" style="background-color: blue">
-                
-                     <p:galleria  value="#{galeriaBean.images}" var="image" panelWidth="600" panelHeight="400" style=" "  showCaption="true" autoPlay="true">
-                         <p:graphicImage cache="false" name="images/#{image}.jpg" alt="Image Description for #{image}" title="#{image}"/>
-                         <p:panelGrid columns="1" styleClass="wf" style="text-align: center;">
-                 
-                          </p:panelGrid>
-                        </p:galleria>
-               
+                     <p:galleria  value="#{galeriaBean.images}" var="image" panelWidth="500" panelHeight="400" style=" "  showCaption="true" autoPlay="true">
+                          <p:graphicImage cache="true" name="images/home/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+                     </p:galleria>
                 </div>
-                <div class="ui-g-12 ui-md-2 ui-g-nopad" style=" ">
-                </div>
+                 <div class="ui-g-12 ui-md-2 ui-g-nopad" style=" ">
+                    <p:graphicImage cache="true" name="images/oferta.jpg" alt="Image Description for " title="lol" width="400" height="600"/>
+                 </div>
         </div>
         <p:dialog   header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
             <h:outputText value="This is a Modal Dialog." />
         </p:dialog>
        
-        <p:carousel value="#{productoFormBean.lista}" headerText="Responsive" var="cate" itemStyle="text-align:center" responsive="true">
+        <p:carousel value="#{productoFormBean.listaDeProductosColchones}" headerText="Aprovecha Nuestros Descuentos" var="col" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
             <f:facet name="header">
-                <p:graphicImage name="resources/images/muebleria1.jpg "/> 
+                <p:graphicImage name="images/Colchones y Somier/#{col.imagenProducto}.jpg" width="200" height="200"/> 
             </f:facet>
             
  
-            <h:outputText value="Id:" />
-            <h:outputText value="#{cate.codigoCate}" />
+            <h:outputText value="Precio:" />
+            <h:outputText value="#{col.precio}" />
  
-            <h:outputText value="Year" />
-            <h:outputText value="#{cate.descripcion}" />
+            <h:outputText value="marca" />
+            <h:outputText value="#{col.marca}" />
  
-            <h:outputText value="Color:" />
-            <h:outputText value="#{cate.nombreCate} "/>
+            <h:outputText value="Descripcion:" />
+            <h:outputText value="#{col.descripcion} "/>
   
  
             <f:facet name="footer">
@@ -63,30 +47,33 @@
             </f:facet>
             </p:panelGrid>
          </p:carousel>
-        <p:carousel value="#{productoFormBean.lista}" headerText="Responsive" var="cate" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+       
+        <p:carousel value="#{productoFormBean.listaDeProductosCocina}" headerText="Responsive" var="prod" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:0px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
             <f:facet name="header">
-                <p:graphicImage name="resources/images/muebleria1.jpg "/> 
+          <!--      <p:commandLink actionListener="" > -->
+                    <p:graphicImage name="images/Cocina/#{prod.imagenProducto}.jpg" width="200" height="200"/>
+              <!--  </p:commandLink>-->
             </f:facet>
             
+            <h:outputText value="Precio" />
+            <h:outputText value="#{prod.precio}" />
  
-            <h:outputText value="Id:" />
-            <h:outputText value="#{cate.codigoCate}" />
- 
-            <h:outputText value="Year" />
-            <h:outputText value="#{cate.descripcion}" />
- 
-            <h:outputText value="Color:" />
-            <h:outputText value="#{cate.nombreCate} "/>
+            <h:outputText value="Marca:" />
+            <h:outputText value="#{prod.marca} "/>
   
+            
+            <h:outputText value="" />
+            <h:outputText value="   #{prod.descripcion}" />
  
             <f:facet name="footer">
-                <p:commandButton value="Comprar " icon="pi pi-search"></p:commandButton>
-            </f:facet>
-             
+            <p:inputNumber id="lblcantidad" value="#{ventaFormBean.cantidad}" required="true" requiredMessage="Debe indicar cantidad"/>
+            <p:commandButton value="Agregar al Carrito" actionListener="#{ventaFormBean.crearVentaProducto(prod)}" update="frmHome:mesagge,frmHome"/>
+           </f:facet>
+                            
             </p:panelGrid>
          </p:carousel>
-  
+  </h:form>
    
     </ui:define>
 </ui:composition>
