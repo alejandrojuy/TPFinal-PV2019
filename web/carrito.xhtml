@@ -13,26 +13,26 @@
                 Carrito de Compras
             </p:panel>
             <!--Productos Agregados al carrito de Compras-->
-            <p:dataTable var="pro" value="#{ventaFormBean}"
+            <p:dataTable var="vent" value="#{ventaFormBean.listaDeVentasProductos}"
                          >
                 <f:facet name="header">
                     PRODUCTOS
                 </f:facet>
                 
                 <p:column headerText="Producto">
-                    <h:outputText value="#{pro.producto.nombre}" />
+                    <h:outputText value="#{vent.producto.nombre}" />
                 </p:column>
 
                 <p:column headerText="Precio">
-                    <h:outputText value="#{pro.producto.precio}" />
+                    <h:outputText value="#{vent.producto.precio}" />
                 </p:column>
 
                 <p:column headerText="Cantidad">
-                    <h:outputText value="#{pro.cantidad}" />
+                    <h:outputText value="#{vent.cantidad}" />
                 </p:column>
                 
                 <p:column headerText="Importe">
-                    <h:outputText value="#{pro.importe}" />
+                    <h:outputText value="#{vent.importe}" />
                 </p:column>
                 
                 <p:column headerText="Opciones">

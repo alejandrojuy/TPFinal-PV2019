@@ -93,5 +93,33 @@ public class LoginFormBean {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+    
+    public String getNombreUsuario(){
+        Usuario usuarioLogueado = new Usuario();
+        usuarioLogueado = (Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        if (usuarioLogueado != null) {
+            
+        return usuarioLogueado.getNombre();  
+        } else {
+         return "";    
+        }
+        
+    }
+    public boolean esConsumidor(){
+        Usuario usuarioLogueado = new Usuario();
+        usuarioLogueado = (Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        if (usuarioLogueado != null) {
+            
+            if (usuarioLogueado.getRol().equals("consumidor")){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+         return false;    
+        }
+        
+    }
 
 }
+

@@ -29,7 +29,7 @@ public class GaleriaBean implements Serializable{
       @PostConstruct
         public void init() {
             images = new ArrayList<String>();
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <=9 ; i++) {
                 images.add("muebleria" + i + ".jpg");
             }
         }

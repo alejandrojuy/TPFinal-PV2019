@@ -29,10 +29,10 @@ public class TestCrearUsuario3 {
         IUsuarioDAO ida= new UsuarioDAOImp();
         Usuario usuario = new Usuario();
         
-        usuario.setUsuario("loll");
-        usuario.setPassword("333");
+        usuario.setUsuario("peluchin");
+        usuario.setPassword("root");
         usuario.setDni(321);
-        usuario.setNombre("rrrrrrrrr");
+        usuario.setNombre("peluchin");
         usuario.setApellido("zerpa22");
         usuario.setSexo("varon22");
         usuario.setDireccion("comedero");

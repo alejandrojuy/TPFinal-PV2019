@@ -48,8 +48,9 @@ public class TestVentaProduco4 {
 //        Producto producto6 = new Producto(26, 1200,  categoria, 5, "marca3", "nombre6", "descripcion6", "deposito", true, "imagenProducto6");
 //         iProductoDAO.agregarProducto(producto6);
           
-        VentaProducto segundaVentaProducto = new VentaProducto(prod, 2, 400);
+         Producto prod2 = listaProducto.get(1);
         VentaProducto primeraVentaProducto = new VentaProducto(prod, 1, 200);
+        VentaProducto segundaVentaProducto = new VentaProducto(prod2, 1, 200);
         iVentaProductoDAO.crearVentaProducto(primeraVentaProducto);
         iVentaProductoDAO.crearVentaProducto(segundaVentaProducto);
     }

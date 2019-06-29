@@ -16,6 +16,8 @@ public interface IVentaDAO {
     
     public List<VentaProducto> obtenerVentasProductosDeUnaVenta(Venta venta);
     
+    public List<Venta> obtenerTodasVentas();
+    
     public void agregarVenta(Venta venta);
 
     public void eliminarVenta(Venta venta);

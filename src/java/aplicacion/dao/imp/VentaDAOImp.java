@@ -77,10 +77,22 @@ public class VentaDAOImp implements Serializable, IVentaDAO {
          Venta venta1 = ventas.get(0);
 
            List<VentaProducto> ventaproducto = new ArrayList<>();
-          //ventaproducto = (ArrayList<VentaProducto>)venta1.getListaVentaProductos();
+
+           
+//ventaproducto = (ArrayList<VentaProducto>)venta1.getListaVentaProductos();
           
     
         return ventaproducto;
+    }
+
+    @Override
+    public List<Venta> obtenerTodasVentas() {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Venta.class);
+        List<Venta> ventas =criteria.list();
+        session.close();
+        return ventas;  
+    
     }
 
 }

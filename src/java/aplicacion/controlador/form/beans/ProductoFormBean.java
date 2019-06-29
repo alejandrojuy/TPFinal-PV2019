@@ -99,6 +99,7 @@ public class ProductoFormBean implements Serializable {
      * Metodo que carga los productos Segun Categoria
      */
     public void cargarProductosSegunCategoria() {
+        
         for (int i = 0; i < listaDeProductos.size(); i++) {
             if (listaDeProductos.get(i).getCategoria().getNombreCate().equals("Cocina")) {
                 this.listaDeProductosCocina.add(listaDeProductos.get(i));

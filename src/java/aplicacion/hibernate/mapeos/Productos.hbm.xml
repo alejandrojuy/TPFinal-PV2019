@@ -15,7 +15,7 @@
    <property name="precio" type="double">
             <column name="prod_precio" length="15" not-null="true" />
         </property>
-      <many-to-one name="categoria" class="aplicacion.modelo.dominio.Categoria" fetch="join">
+      <many-to-one name="categoria" class="aplicacion.modelo.dominio.Categoria" fetch="join" lazy="false">
         <column name="pub_categoria_codigo" not-null="true"/>
        </many-to-one>
 

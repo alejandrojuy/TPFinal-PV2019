@@ -20,6 +20,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
@@ -34,21 +35,32 @@ public class VentaFormBean implements Serializable {
     @ManagedProperty(value = "#{VentaBean}")
     private VentaBean ventaBean;
     private Venta venta;
-    private int cantidad;
     private Usuario usuarioLogueado;
     private List<VentaProducto> listaDeVentasProductos;
     private List<Venta> listaDeVentas;
     private List<String> modosDePago;
-
+    private VentaProducto ventaProducto ;
+    private int cant;
+   
     /**
      * Constructor
      */
     public VentaFormBean() {
+        
         modosDePago = new ArrayList();
         usuarioLogueado = new Usuario();
         venta = new Venta();
         listaDeVentas = new ArrayList<>();
         listaDeVentasProductos = new ArrayList<>();
+         ventaProducto = new VentaProducto();
+    }
+
+    public int getCant() {
+        return cant;
+    }
+
+    public void setCant(int cant) {
+        this.cant = cant;
     }
 
     @PostConstruct
@@ -151,21 +163,27 @@ public class VentaFormBean implements Serializable {
         return usuario;
     }
 
+
     /**
      * Metodo que crea una VentaProducto agregando un Producto y su cantidad al
      * carrito
      *
      * @param producto
      */
+    
     public void crearVentaProducto(Producto producto) {
-        VentaProducto nuevo = new VentaProducto();
-        double importe = this.cantidad * producto.getPrecio();
-        nuevo.setProducto(producto);
-        nuevo.setCantidad(this.cantidad);
-        nuevo.setImporte(importe);
-        listaDeVentasProductos.add(nuevo);
+        
+        double importe= cant* producto.getPrecio();
+        ventaProducto.setImporte(importe);
+       ventaProducto.setCantidad(cant);
+        System.out.println("cantidad"+cant);
+        System.out.println("producto"+importe);
+        System.out.println("precio"+producto.getPrecio());
+        ventaProducto.setProducto(producto);
+        listaDeVentasProductos.add(ventaProducto);
         FacesMessage msg = new FacesMessage("Exito", "Producto Agregado al Carrito");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        getListaDeVentasProductos();
 
     }
 
@@ -256,13 +274,15 @@ public class VentaFormBean implements Serializable {
         this.listaDeVentas = listaDeVentas;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public VentaProducto getVentaProducto() {
+        return ventaProducto;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setVentaProducto(VentaProducto ventaProducto) {
+        this.ventaProducto = ventaProducto;
     }
+
+ 
 
     public List<String> getModosDePago() {
         return modosDePago;
@@ -271,5 +291,5 @@ public class VentaFormBean implements Serializable {
     public void setModosDePago(List<String> modosDePago) {
         this.modosDePago = modosDePago;
     }
-
+ 
 }
