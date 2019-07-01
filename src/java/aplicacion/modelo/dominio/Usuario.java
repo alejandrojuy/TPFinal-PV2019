@@ -56,7 +56,16 @@ public class Usuario implements Serializable{
         this.rol = rol;
     }
 
+    public Usuario(String usuario, int dni, String nombre, String apellido, String rol) {
+        this.usuario = usuario;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rol = rol;
+    }
 
+
+    
     public String getUsuario() {
         return usuario;
     }
@@ -171,7 +180,7 @@ public class Usuario implements Serializable{
         this.rol = rol;
     }
 
-
+       
 
     }
 

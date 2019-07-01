@@ -37,7 +37,7 @@ public class LoginFormBean {
      *
      * @return
      */
-    public String verificarCredenciales() {
+     public String verificarCredenciales() {
         String resultado = "";
        
         Usuario usuario = usuarioBean.verificarCredenciales(this.usuario, this.password);
@@ -119,7 +119,7 @@ public class LoginFormBean {
          return false;    
         }
         
-    }
+    } 
 
 }
 

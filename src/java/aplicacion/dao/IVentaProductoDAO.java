@@ -11,8 +11,11 @@ import java.util.List;
  * @author Cristian
  */
 public interface IVentaProductoDAO {
-
+    public void agregarVentaProductoALista(VentaProducto ventaproducto);
+    
     public List<VentaProducto> listaVentasProducto();
+    
+    public List<VentaProducto> listaVentasProductoPendientes();
 
     public void crearVentaProducto(VentaProducto ventaProducto);
 

@@ -5,6 +5,7 @@
  */
 package aplicacion.dao.imp;
 
+import aplicacion.Utils.ListaVentaProducto;
 import aplicacion.dao.IVentaProductoDAO;
 import aplicacion.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Producto;
@@ -22,7 +23,13 @@ import org.hibernate.Session;
  * @author jaimito
  */
 public class VentaProductoDAOimp  implements Serializable, IVentaProductoDAO{
+     private ListaVentaProducto listaImp;
 
+    public VentaProductoDAOimp() {
+            listaImp = new  ListaVentaProducto();
+                    
+    }
+     
  
     @Override
     public void crearVentaProducto(VentaProducto ventaProducto) {
@@ -56,4 +63,27 @@ public class VentaProductoDAOimp  implements Serializable, IVentaProductoDAO{
         return lista;
         
     }
+
+    @Override
+    public List<VentaProducto> listaVentasProductoPendientes() {
+       
+    return listaImp.getLista();
+    }
+
+    public ListaVentaProducto getListaImp() {
+        return listaImp;
+    }
+
+    public void setListaImp(ListaVentaProducto listaImp) {
+        this.listaImp = listaImp;
+    }
+
+    @Override
+    public void agregarVentaProductoALista(VentaProducto ventaproducto) {
+        listaImp.agregarVentaProducto(ventaproducto);
+    
+    }
+
+
+
 }

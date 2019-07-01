@@ -127,5 +127,32 @@ public class Producto implements Serializable{
         this.imagenProducto = imagenProducto;
     }
 
+    @Override
+    public String toString() {
+        return "Producto{" + "codigo=" + codigo + ", precio=" + precio + ", categoria=" + categoria + ", stock=" + stock + ", marca=" + marca + ", nombre=" + nombre + ", descripcion=" + descripcion + ", deposito=" + deposito + ", estado=" + estado + ", imagenProducto=" + imagenProducto + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 13 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        return true;
+    }
+
     
 }

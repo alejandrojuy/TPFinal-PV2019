@@ -5,7 +5,9 @@
  */
 package aplicacion.controlador.form.beans;
 
+import aplicacion.Utils.ListaVentaProducto;
 import aplicacion.controlador.beans.VentaBean;
+import aplicacion.controlador.beans.VentaProductoBean;
 //import aplicacion.modelo.dominio.Pago;
 import aplicacion.modelo.dominio.Producto;
 import aplicacion.modelo.dominio.Usuario;
@@ -20,7 +22,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
@@ -31,48 +32,59 @@ import javax.faces.view.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class VentaFormBean implements Serializable {
-
-    @ManagedProperty(value = "#{VentaBean}")
+    /// PARA MOSTRAR LAS TODAS LAS VENTAS VER VIDEO 13 abm Publicaciones Listado en youtube minuto 33 en adelante
+  @ManagedProperty(value = "#{ventaBean}")
     private VentaBean ventaBean;
-    private Venta venta;
+   @ManagedProperty(value = "#{ventaProductoBean}")
+    private VentaProductoBean ventaProductoBean;
+   @ManagedProperty(value = "#{productoFormBean}")
+    private ProductoFormBean productoFormBean;
     private Usuario usuarioLogueado;
-    private List<VentaProducto> listaDeVentasProductos;
     private List<Venta> listaDeVentas;
     private List<String> modosDePago;
-    private VentaProducto ventaProducto ;
-    private int cant;
+    private VentaProducto ventaProducto;
+    private Producto producto;
+    private Venta venta;
+    private List<VentaProducto> listaVentaProducto;
+    private int cantidad;
    
     /**
      * Constructor
      */
     public VentaFormBean() {
-        
+        producto = new Producto();
         modosDePago = new ArrayList();
         usuarioLogueado = new Usuario();
         venta = new Venta();
-        listaDeVentas = new ArrayList<>();
-        listaDeVentasProductos = new ArrayList<>();
-         ventaProducto = new VentaProducto();
-    }
+        listaDeVentas = new ArrayList<>();       
+     }
 
-    public int getCant() {
-        return cant;
+   
+    public void generarListaVentasProductos()
+    {
+        listaVentaProducto = ventaProductoBean.obtenerVentasProductos();
     }
-
-    public void setCant(int cant) {
-        this.cant = cant;
-    }
-
-    @PostConstruct
+            
+    @PostConstruct //se ejecta de forma automatica
     public void init() {
+    generarListaVentasProductos();
+     ventaProducto  = new VentaProducto();
         cargarModosDePago();
+    }
+
+    public List<VentaProducto> getListaVentaProducto() {
+        return listaVentaProducto;
+    }
+
+    public void setListaVentaProducto(List<VentaProducto> listaVentaProducto) {
+        this.listaVentaProducto = listaVentaProducto;
     }
 
     // Metodos 
     /**
      * Metodo que crea una nueva Venta
      */
-    public void crearNuevaVenta() {
+  /**  public void crearNuevaVenta() {
         double totalVenta = 0;
         String estadoVenta = "Encargado";
         String tipoDeFactura = "A";
@@ -91,8 +103,9 @@ public class VentaFormBean implements Serializable {
             venta.setListaVentaProductos( new HashSet<>(listaDeVentasProductos) );
             //venta.setMedioDePago(new Pago(1, "modoDePago1", "modoDePago1"));
         }
-    }
+    }**/
 
+    
     /**
      * Metodo que devuelve la fecha actual del sistema
      *
@@ -111,6 +124,14 @@ public class VentaFormBean implements Serializable {
     public Date obtenerHoraActual() {
         Date horaActual = new Date();
         return horaActual;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     /**
@@ -170,28 +191,52 @@ public class VentaFormBean implements Serializable {
      *
      * @param producto
      */
+   
     
-    public void crearVentaProducto(Producto producto) {
-        
-        double importe= cant* producto.getPrecio();
-        ventaProducto.setImporte(importe);
-       ventaProducto.setCantidad(cant);
-        System.out.println("cantidad"+cant);
-        System.out.println("producto"+importe);
-        System.out.println("precio"+producto.getPrecio());
-        ventaProducto.setProducto(producto);
-        listaDeVentasProductos.add(ventaProducto);
-        FacesMessage msg = new FacesMessage("Exito", "Producto Agregado al Carrito");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        getListaDeVentasProductos();
 
+      public void cargarProdVenta(Producto prod)
+    {   
+        producto=prod;
+         
+        ventaProducto.setProducto(producto);
+  
+        double importe = ventaProducto.getCantidad()*ventaProducto.getProducto().getPrecio();
+        ventaProducto.setImporte(importe);
+        ventaProducto.setCantidad(cantidad);
+        ventaProductoBean.agregarAListaVentaProducto(ventaProducto);
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Producto agregado al carrito", "Producto Agregado al Carrito"));
+        generarListaVentasProductos();
+        ventaProducto= new VentaProducto();
     }
+   
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+     
+  
+
+     
+    public VentaProducto getVentaProducto() {
+        return ventaProducto;
+    }
+
+    public void setVentaProducto(VentaProducto ventaProducto) {
+        this.ventaProducto = ventaProducto;
+    }
+    
+    
 
     /**
      * Metodo que quita un producto seleccionado del carrito de compras
      *
      * @param producto
      */
+    /**
     public void quitarProductoDelCarrito(Producto producto) {
         boolean borrado = false;
         for (int i = 0; i < this.listaDeVentasProductos.size(); i++) {
@@ -208,21 +253,21 @@ public class VentaFormBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
 
-    }
+    }**/
 
     /**
      * Metodo que calcula y devuelve el importe total del carrito de compras
      *
      * @return
      */
-    public double calcularImporteDelCarrito() {
+   /** public double calcularImporteDelCarrito() {
         double resultado = 0;
         for (int i = 0; i < this.listaDeVentasProductos.size(); i++) {
             resultado = resultado + listaDeVentasProductos.get(i).getImporte();
         }
         return resultado;
     }
-
+**/
     /**
      * Metodo que carga las opciones de pago en una lista 
      */
@@ -258,13 +303,7 @@ public class VentaFormBean implements Serializable {
         this.usuarioLogueado = usuarioLogueado;
     }
 
-    public List<VentaProducto> getListaDeVentasProductos() {
-        return listaDeVentasProductos;
-    }
-
-    public void setListaDeVentasProductos(List<VentaProducto> listaDeVentasProductos) {
-        this.listaDeVentasProductos = listaDeVentasProductos;
-    }
+    
 
     public List<Venta> getListaDeVentas() {
         return listaDeVentas;
@@ -274,14 +313,16 @@ public class VentaFormBean implements Serializable {
         this.listaDeVentas = listaDeVentas;
     }
 
-    public VentaProducto getVentaProducto() {
-        return ventaProducto;
+    public ProductoFormBean getProductoFormBean() {
+        return productoFormBean;
     }
 
-    public void setVentaProducto(VentaProducto ventaProducto) {
-        this.ventaProducto = ventaProducto;
+    public void setProductoFormBean(ProductoFormBean productoFormBean) {
+        this.productoFormBean = productoFormBean;
     }
 
+   
+   
  
 
     public List<String> getModosDePago() {
@@ -290,6 +331,14 @@ public class VentaFormBean implements Serializable {
 
     public void setModosDePago(List<String> modosDePago) {
         this.modosDePago = modosDePago;
+    }
+
+    public VentaProductoBean getVentaProductoBean() {
+        return ventaProductoBean;
+    }
+
+    public void setVentaProductoBean(VentaProductoBean ventaProductoBean) {
+        this.ventaProductoBean = ventaProductoBean;
     }
  
 }

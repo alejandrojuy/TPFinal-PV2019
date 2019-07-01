@@ -3,15 +3,26 @@ package aplicacion.controlador.form.beans;
 import aplicacion.controlador.beans.UsuarioBean;
 //import aplicacion.modelo.dominio.Rol;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.primefaces.event.RowEditEvent;
 
 
@@ -224,6 +235,33 @@ public class UsuarioFormBean implements Serializable{
     public void setListadoProvincias(List<String> listadoProvincias) {
         this.listadoProvincias = listadoProvincias;
     }
-
-   
+    public List<Usuario> lista2222()
+    {List<Usuario> l = new ArrayList();
+     Usuario usu = new Usuario("das", 212, "das", "dsa" , "sad ");
+        l.add(usu);
+     return l;
+    }
+    public void listarArrayUsuarioPdf()
+        throws JRException, IOException{
+        Map<String, Object> parametros = new HashMap<String, Object>();
+        //puedo pasar parametros al report, siempre que el diseño lo soporte
+        //parametros.put("usuario", "pepito");
+        List<Usuario> usuarios = new ArrayList();
+         
+        usuarios = lista2222();
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/usuarioReport.jasper"));
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), parametros, new JRBeanCollectionDataSource(usuarios));
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        response.setContentType("application/pdf");
+        response.addHeader("Content-disposition", "attachment; filename=usuario-report.pdf");
+        ServletOutputStream stream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, stream);
+        //exportamos a un archivo en disco
+        //JasperExportManager.exportReportToPdfFile(jasperPrint, "e:/reporte.pdf");
+        //mostrar en visor jasper
+        //JasperViewer.viewReport(jasperPrint,false);
+        stream.flush();
+        stream.close();
+        FacesContext.getCurrentInstance().responseComplete();
+        }
 }
