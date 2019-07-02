@@ -28,27 +28,35 @@
                             <h:outputText value="#{prod.precio}" />
                             <h:outputText value="Marca:" />
                             <h:outputText value="#{prod.marca} "/>
-                            <p:commandButton value="comprarConDialog1" icon="ui-icon-cart"  update="dlgCantidad" oncomplete="PF('nuevaVentaProducto').show()" resetValues="true"/>
-                            <p:commandButton value="comprarConDialogFuera del carrusel" actionListener="#{ventaFormBean.cargarProdVenta(prod)}" id="btnDlg"  oncomplete="PF('nuevaVP').show()"/>
-                               <p:dialog id="dlgCantidad" widgetVar="nuevaVentaProducto" modal="true"   header="Cantidad del Producto seleccionado"    height="300"  >
-                                  <p:panelGrid id="tblNuevaVentaProducto" columns="2">
-                                       <p:outputLabel  value="Cantidad" id="lblCantidad" />
-                                       <p:inputNumber id="input1" value="#{ventaFormBean.cantidad}" >   
-                                       </p:inputNumber>  
-                                       <p:commandButton value="Aceptar" actionListener="#{ventaFormBean.cargarProdVenta(prod)}" update= ":frmListadoVentasProductos:tblVentaProducos,frmHome,   :frmCarrito:tblCarro" icon="fa-cart-plus" oncomplete="PF('nuevaVentaProducto').hide()"/>
-                                   </p:panelGrid>
-                               </p:dialog>
+                            <p:commandButton value="comprarConDialog1" icon="ui-icon-cart"    update=":dlgCantidad" 
+                                             oncomplete="PF('nuevaVentaProducto').show()" resetValues="true">
+                                <f:setPropertyActionListener target="#{ventaFormBean.producto}" value="#{prod}"/>
+                            </p:commandButton>
+                            <p:commandButton value="comprarConDialogFuera del carrusel" id="btnDlg"  oncomplete="PF('nuevaVP').show()"/>
+                             
                       </p:panelGrid>
                 </p:carousel>
-        </h:form> 
+        </h:form>
+        
+              <p:dialog id="dlgCantidad" widgetVar="nuevaVentaProducto" modal="true"   header="Cantidad del Producto seleccionado"    height="300"  >
+                  <h:form id="frmDlg">
+                                  <p:panelGrid id="tblNuevaVentaProducto" columns="2">
+                                       <p:outputLabel  value="Cantidad" id="lblCantidad" />
+                                       <p:inputText id="input898" value="#{ventaFormBean.cantidad}" >   
+                                       </p:inputText>  
+                                       <p:commandButton value="Aceptar" actionListener="#{ventaFormBean.cargarProdVenta()}" ajax="false" update= ":frmListadoVentasProductos:tblVentaProducos,   :frmCarrito:tblCarro" icon="fa-cart-plus" oncomplete="PF('nuevaVentaProducto').hide()"/>
+                                   </p:panelGrid>
+                      </h:form>
+              </p:dialog>
+        
                     <p:dialog id="dlgCant" widgetVar="nuevaVP" modal="true"   header="Cantidad del Producto seleccionado dialog2"    height="300"  >
                         <h:form id="frmdlg2">
                             <h:panelGrid id="dlg2" columns="2" cellpadding="2">
                                  <p:outputLabel  value="Cantidad" id="lblCantidad" />
-                                 <p:inputNumber id="input" value="#{ventaFormBean.ventaProducto.cantidad}" required="true" requiredMessage="Ingrese cantidad mayor a 0">   
-                                 </p:inputNumber>  
+                                 
+                                
 
-                                 <p:commandButton value="Aceptar" actionListener="#{ventaFormBean.cargarProdVenta(prod)}" update= ":frmHome,:frmListadoVentasProductos:tblVentaProducos"
+                                 <p:commandButton value="Aceptar" actionListener="#{ventaFormBean.cargarProdVenta()}" update= ":frmHome,:frmListadoVentasProductos:tblVentaProducos"
                                                   icon="fa-cart-plus" oncomplete="PF('nuevaVP').hide()"/>
 
                               </h:panelGrid>

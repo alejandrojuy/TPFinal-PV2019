@@ -46,7 +46,7 @@ public class VentaFormBean implements Serializable {
     private Producto producto;
     private Venta venta;
     private List<VentaProducto> listaVentaProducto;
-    private int cantidad;
+    private int cantidad = 5;
    
     /**
      * Constructor
@@ -68,8 +68,8 @@ public class VentaFormBean implements Serializable {
     @PostConstruct //se ejecta de forma automatica
     public void init() {
     generarListaVentasProductos();
-     ventaProducto  = new VentaProducto();
-        cargarModosDePago();
+    ventaProducto  = new VentaProducto();
+    cargarModosDePago();
     }
 
     public List<VentaProducto> getListaVentaProducto() {
@@ -189,20 +189,18 @@ public class VentaFormBean implements Serializable {
      * Metodo que crea una VentaProducto agregando un Producto y su cantidad al
      * carrito
      *
-     * @param producto
+     * @param prod
      */
    
     
 
-      public void cargarProdVenta(Producto prod)
-    {   
-        producto=prod;
-         
-        ventaProducto.setProducto(producto);
-  
+      public void cargarProdVenta()
+    {   //System.out.println(this.cantidad);
+       ventaProducto.setProducto(producto);
+        ventaProducto.setCantidad(this.cantidad);
+       // System.out.println(ventaProducto.getCantidad()+ "cannntidad ");
         double importe = ventaProducto.getCantidad()*ventaProducto.getProducto().getPrecio();
         ventaProducto.setImporte(importe);
-        ventaProducto.setCantidad(cantidad);
         ventaProductoBean.agregarAListaVentaProducto(ventaProducto);
         FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Producto agregado al carrito", "Producto Agregado al Carrito"));
         generarListaVentasProductos();
@@ -210,10 +208,13 @@ public class VentaFormBean implements Serializable {
     }
    
     public int getCantidad() {
+        //System.out.println("entro a get...");
         return cantidad;
     }
 
     public void setCantidad(int cantidad) {
+        System.out.println("entro a set....");
+        System.out.println(cantidad);
         this.cantidad = cantidad;
     }
 
