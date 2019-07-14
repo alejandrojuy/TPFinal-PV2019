@@ -15,6 +15,7 @@ public class VentaProducto implements Serializable{
     //Constructor
 
     public VentaProducto() {
+        producto = new Producto();
     }
 
     public VentaProducto(int codigo, Producto producto, int cantidad, double importe) {

@@ -11,29 +11,25 @@ import aplicacion.modelo.dominio.Usuario;
 import aplicacion.modelo.dominio.Venta;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author crist
+ * @author jaimito
  */
 @ManagedBean
 @ViewScoped
 public class VentaBean implements Serializable{
     private IVentaDAO iVentaDAO;
-    
     /**
-     * Consructor
+     * Creates a new instance of VentaBean1
      */
     public VentaBean() {
-        iVentaDAO = new VentaDAOImp();
+         iVentaDAO = new VentaDAOImp();
     }
     
-    // Metodos
-    
-    public void agregarVenta(Venta venta){
+     public void agregarVenta(Venta venta){
         iVentaDAO.agregarVenta(venta);
     }
     
@@ -58,6 +54,4 @@ public class VentaBean implements Serializable{
     public void setiVentaDAO(IVentaDAO iVentaDAO) {
         this.iVentaDAO = iVentaDAO;
     }
-    
-    
 }

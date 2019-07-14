@@ -10,78 +10,77 @@
     </h:head>
     <h:body>
  
-        <h:form id="mostrar" class="ui-g-12">
-            <p:dataTable var="car" value=" " id="dtbmostrar">
+                <h:form id="mostrar" class="ui-g-12">
+                    <p:dataTable var="prod" value="#{productoFormBean.listaDeProductosCocina}" id="dtbmostrar">
+                                            
+                               <p:column headerText="Producto">
+                                <p:graphicImage name="images/Cocina/ .jpg" width="100" height="100"/>
+                               </p:column>
 
-                       <p:column headerText="Producto">
-                        <p:graphicImage name="images/Cocina/ .jpg" width="100" height="100"/>
-                         
+                                <p:column headerText="Nombre">
+                                    <h:outputText value=" #{prod.codigo}" />
+                               </p:column>       
 
-                       </p:column>
-                       <p:column headerText="Precio">
-                           <h:outputText value=" " />
-                       </p:column>
+                                <p:column headerText="Precio">
+                                   <h:outputText value="#{prod.precio} " />
+                               </p:column>
+                        <p:column headerText="Precio">
+                            <p:commandButton value="comprarConDialog1" icon="ui-icon-cart"     actionListener="#{ventaFormBean.car(pro)}"
+                                             update=":dlgCantidad" oncomplete="PF('nuevaVentaProducto').show()">
+                                             
+                            </p:commandButton>
+                    </p:column>
 
-                       <p:column headerText="">
-                           <h:outputText value=" " />
-                       </p:column>
-                       <p:column headerText="">
-                           <p:commandButton    oncomplete="PF('nuevaVentaProducto').show()" />     
-                       </p:column>
-                 
-
-               </p:dataTable>
-            <h:form id="frmCantidad">
+                       </p:dataTable>
+                </h:form>
+            
                 <p:dialog id="dlgCantidad" widgetVar="nuevaVentaProducto" modal="true"   header="Cantidad del Producto seleccionado"    height="300"  >
-                    
+                    <h:form id="frmCantidad">
                                     <p:panelGrid id="tblNuevaVentaProducto" columns="2">
                                        <p:outputLabel  value="Cantidad" id="lblCantidad" />
-                                       <p:inputNumber id="input1" value="" required="true" >   
+                                       <p:inputNumber id="input1" value="#{ventaFormBean.ventaProducto.cantidad}" required="true" >   
 
                                        </p:inputNumber>  
 
-                                       <p:commandButton value="Aceptar"  update= ":cargados:q, " icon="fa-cart-plus" oncomplete="PF('nuevaVentaProducto').hide()"/>
+                                    <p:commandButton value="Aceptar" actionListener="#{ventaFormBean.cargarProdVenta()}" 
+                                                         update= ":frmListadoVentasProductos:tblVentaProducos,   :frmCarrit:q" 
+                                                         icon="fa-cart-plus" oncomplete="PF('nuevaVentaProducto').hide()"
+                                                         ajax="false"/>
                                     </p:panelGrid>
-                
+                </h:form>   
                </p:dialog>
-              </h:form>
-        </h:form>
+              
+   
        
         
         
-        <h:form id="cargados" class="ui-g-12">
-            <p:dataTable var="car" value="" id="q">
-                        
-                        <p:column headerText="Producto">
-                            <h:outputText value="" />
+        <h:form id="frmCarrit" class="ui-g-12">
+            <p:dataTable var="vp" value="#{ventaFormBean.listaVentaProducto}" id="q">
+                        <p:column headerText="Codigo de ¨VentaProducto">
+                            <h:outputText value="#{vp.codigo} No tiene por q lo genera el motor de la bd" />
                         </p:column>
+
+                        <p:column headerText="Cantidad de la Venta">
+                            <h:outputText value="#{vp.cantidad}" />
+                        </p:column>
+                        <p:column headerText="importe de la Venta">
+                            <h:outputText value="#{vp.importe}" />
+                        </p:column>
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value="#{vp.producto.codigo}" />
+                        </p:column>
+
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{vp.producto.nombre}" />
+                        </p:column>
+
                         <p:column headerText="Precio">
-                            <h:outputText value="" />
-                        </p:column>
-                    
-                
-                        <p:column headerText="Cantidad">
-                            <h:outputText value="" />
-                        </p:column>
-
-                        <p:column headerText="Year">
-                            <h:outputText value="" />
-                        </p:column>
-
-                        <p:column headerText="Brand">
-                            <h:outputText value=" " />
-                        </p:column>
-
-                        <p:column headerText="Color">
-                            <h:outputText  />
+                            <h:outputText value="#{vp.producto.precio}" />
                         </p:column>
                 </p:dataTable>
             
-              <p:commandButton id="btnImprimirUsuario"
-                value="Imprimir Usuarios"
-                actionListener="#{usuarioFormBean.listarArrayUsuarioPdf()}"
-                ajax="false"
-                resetValues="true"/>
+              
         </h:form>
       
         

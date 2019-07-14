@@ -10,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <h:outputStylesheet name="./css/estilos.css"/>
+         
         <title>Facelets Template</title>
     </h:head>
 
@@ -18,8 +18,8 @@
 
         <div id="top">   
             <ui:insert name="top">
-                <p:panel style="background-color: greenyellow">
-                <h1 style="text-align: center">Muebleria FREE FIRE</h1>    
+                <p:panel >
+                <h1 style="text-align: center">Muebleria </h1>    
                 </p:panel>
                 <h:form>  
                     <p:growl id="messages"/>
@@ -47,7 +47,10 @@
                         <f:facet name="options">
                             <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Buscar"/>
                             <p:commandButton  value="Cerrar Sesion"/>
-                        </f:facet>
+                        </f:facet> 
+                         <f:facet name="options">
+                         <p:commandButton value="Ver Carrito" oncomplete="PF('nuevaV').show()"/>
+                             </f:facet>
                     </p:menubar>
                 </h:form>
             </ui:insert>

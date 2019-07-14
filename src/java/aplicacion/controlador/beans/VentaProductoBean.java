@@ -26,6 +26,8 @@ public class VentaProductoBean implements Serializable{
     }
     
     
+    
+    
     public void agregarAListaVentaProducto(VentaProducto ventaProducto)
     {
         iVentaProductoDAO.agregarVentaProductoALista(ventaProducto);
@@ -34,7 +36,12 @@ public class VentaProductoBean implements Serializable{
     public IVentaProductoDAO getiVentaProductoDAO() {
         return iVentaProductoDAO;
     }
-
+    
+    public void cargarVenta(VentaProducto ventaProducto)
+    {
+     iVentaProductoDAO.crearVentaProducto(ventaProducto);
+    }
+    
     public  List<VentaProducto> obtenerVentasProductos()
     {
         return iVentaProductoDAO.listaVentasProductoPendientes();

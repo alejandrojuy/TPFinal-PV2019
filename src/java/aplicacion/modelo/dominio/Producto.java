@@ -23,7 +23,9 @@ public class Producto implements Serializable{
     private String deposito;
     private boolean estado;//esta variable es si lo activo para venderlo o lo desactivo para q no figure mas
     private String imagenProducto;
+    
     public Producto() {
+        categoria = new Categoria();
     }
     //constructor 
 

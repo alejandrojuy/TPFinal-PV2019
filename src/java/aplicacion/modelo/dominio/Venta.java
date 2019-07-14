@@ -27,6 +27,7 @@ public class Venta implements Serializable{
     //constructor
     public Venta() {
         listaVentaProductos= new HashSet();
+        usuario = new Usuario();
     }
 
     public Venta( double descuentoTotal, double subtotalVenta, double totalventa, Date fechaVenta, Date hora, String estado, Usuario usuario, String tipoFactura, Set<VentaProducto> listaVentaProductos) {
